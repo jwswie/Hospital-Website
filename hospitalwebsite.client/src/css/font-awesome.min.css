@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('./fonts/fontawesome-webfont.ttf?v=4.6.3') format('truetype');
+}
+
+.fa {
+    font: normal normal normal 14px/1 FontAwesome;
+}
+
+.fa-phone:before {
+    content: "\f095"
+}
+
+.fa-paper-plane:before {
+    content: "\f1d8"
+}
