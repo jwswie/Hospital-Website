@@ -31,8 +31,10 @@ function App() {
                             <li><a href="#doctors">Doctors</a></li>
                             <li><a href="#schedule">Appointment schedule</a></li>
                             <li><a href="#order">Order Medicine</a></li>
+                            <li><a href="#login" style={{ left: '35px' }}>Log In</a></li>
                         </ul>
                     </div>
+
                 </div>
             </nav>
 
@@ -47,17 +49,18 @@ function App() {
                             <div className="message-box">
                                 <h4>WHAT WE DO</h4>
                                 <h2>Clinic Service</h2>
-                                <p>Quisque eget nisl id nulla sagittis auctor quis id. Aliquam quis vehicula enim, non aliquam risus.
-                                    Sed a tellus quis mi rhoncus dignissim.</p>
-                                <p> Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus
-                                    bibendum. Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis dis
-                                    parturient montes, nascetur ridiculus mus. </p>
+                                <p>At our clinic, we are dedicated to providing comprehensive and personalized healthcare to meet the needs of
+                                    each patient. Our team of highly qualified doctors, nurses, and medical staff work together to offer a wide
+                                    range of services, from preventive care and routine check-ups to specialized treatments and diagnostics</p>
+                                <p> With state-of-the-art equipment and a commitment to excellence, we ensure that every patient receives
+                                    the best possible care in a comfortable and compassionate environment. Your health is our top priority,
+                                    and we are here to support you every step of the way </p>
                                 <a href="#" data-scroll className="btn-light btn-brd effect-1">Learn More</a>
                             </div>
                         </div>
 
                         <div className="col-md-6">
-                            <img src="images/about_03.jpg" alt="about-image" className="img-responsive"></img>
+                            <img src="images/home_about.png" alt="about-image" className="img-responsive"></img>
                         </div>
                     </div>
 
@@ -65,26 +68,26 @@ function App() {
 
                     <div className="col-md-3">
                         <div className="service-widget">
-                            <img src="images/clinic_01.jpg" alt="" className="img-responsive"></img>
+                            <img src="images/clinic_01.jpg" alt="clinic-photo" className="img-responsive"></img>
                             <h3>Digital Control Center</h3>
                         </div>
                     </div>
                     <div className="col-md-3">
                         <div className="service-widget">
-                            <img src="images/clinic_02.jpg" alt="" className="img-responsive"></img>
+                            <img src="images/clinic_02.jpg" alt="clinic-photo" className="img-responsive"></img>
                             <h3>Hygienic Operating Room</h3>
                         </div>
                     </div>
                     <div className="col-md-3">
                         <div className="service-widget">
-                            <img src="images/clinic_03.jpg" alt="" className="img-responsive"></img>
+                            <img src="images/clinic_03.jpg" alt="clinic-photo" className="img-responsive"></img>
                             <h3>Specialist Physicians</h3>
                         </div>
                     </div>
                     <div className="col-md-3">
                         <div className="service-widget">
-                            <img src="images/clinic_01.jpg" alt="" className="img-responsive"></img>
-                            <h3>Digital Control Center</h3>
+                            <img src="images/clinic_04.jpg" alt="clinic-photo" className="img-responsive"></img>
+                            <h3>Comfortable Rooms</h3>
                         </div>
                     </div>
                 </div>
