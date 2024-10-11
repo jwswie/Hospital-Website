@@ -1,5 +1,5 @@
-import './css/bootstrap.min.css';
-import './css/font-awesome.min.css';
+import './css/bootstrap1.min.css';
+
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -9,53 +9,103 @@ function AboutPage() {
     
     <div className="clinic_version">
 
-      <nav className="navbar navbar-custom navbar-fixed-top">
-        <div className="top-area">
-          <div className="container">
-            <div className="col-sm-6">
-              <p>Monday - Saturday, 8am to 10pm </p>
-            </div>
-            <div className="col-sm-6">
-              <p className="text-right">Call us now (+1) 234 567 890</p>
-            </div>
+          <div className="py-5">
+              <div className="container">
+                  <div className="row g-5">
+                      <div className="col-lg-6">
+                          <div className="d-flex flex-column">
+                              <img className="w-75 align-self-end" src="images/about_01.jpg" alt="about-image"></img>
+                              <img className="w-50 bg-white pt-3 pe-3" src="images/about_02.jpg" alt="about-image"
+                                  style={{ marginTop: '-25%' }}></img>
+                          </div>
+                      </div>
+                      <div className="col-lg-6">
+                          <h1 className="mb-4">Why You Should Trust Us? Get Know About Us!</h1>
+                          <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita
+                              erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                          <p className="mb-4">Stet no et lorem dolor et diam, amet duo ut dolore vero eos. No stet est diam rebum
+                              amet diam ipsum. Clita clita labore, dolor duo nonumy clita sit at, sed sit sanctus dolor eos.
+                          </p>
+                          <p><i className="far fa-check-circle text-primary me-3"></i>Quality health care</p>
+                          <p><i className="far fa-check-circle text-primary me-3"></i>Only Qualified Doctors</p>
+                          <p><i className="far fa-check-circle text-primary me-3"></i>Medical Research Professionals</p>
+                      </div>
+                  </div>
+              </div>
           </div>
-        </div>
 
-        <div className="container navigation">
+          <div className="bg-primary overflow-hidden my-5">
 
-          <a className="navbar-brand" href="index.html" style={{ marginTop: '5px' }}> <img src="images/logo.png" alt="" width="150" height="40" /> </a>
+              <div className="row g-0">
+                  <div className="col-lg-6 feature-text py-5">
+                      <div className="p-lg-5 ps-lg-0">
+                          <h1 className="text-white mb-4">Why Choose Us</h1>
+                          <p className="text-white mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam
+                              amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo erat amet
+                          </p>
 
-          <div className="navbar-collapse navbar-right">
-            <ul className="nav navbar-nav">
-              <li><a><Link to="/">Home</Link></a></li>
-              <li className="active"><a href="#about"><Link to="/about">About Us</Link></a></li>
-              <li><a href="#service">Servises</a></li>
-              <li><a href="#doctors">Doctors</a></li>
-              <li><a href="#schedule">Appointments</a></li>
-              <li><a href="#order">Order Medicine</a></li>
-              <li><a href="#contact">Contact</a></li>
-              <li><a href="#login" style={{ left: '25px' }}>Log In</a></li>
-            </ul>
+                          <div className="row g-4">
+                              <div className="col-6">
+                                  <div className="d-flex">
+                                      <div className="d-flex align-items-center justify-content-center rounded-circle bg-light"
+                                          style={{ width: '55px', height: '55px' }}>
+                                          <i className="fa fa-user-md text-primary"></i>
+                                      </div>
+                                      <div className="ms-4">
+                                          <p className="text-white mb-2">Experience</p>
+                                          <h5 className="text-white mb-0">Doctors</h5>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div className="col-6">
+                                  <div className="d-flex">
+                                      <div className="d-flex align-items-center justify-content-center rounded-circle bg-light"
+                                          style={{ width: '55px', height: '55px' }}>
+                                          <i className="fa fa-check text-primary"></i>
+                                      </div>
+                                      <div className="ms-4">
+                                          <p className="text-white mb-2">Quality</p>
+                                          <h5 className="text-white mb-0">Services</h5>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div className="col-6">
+                                  <div className="d-flex">
+                                      <div className="d-flex align-items-center justify-content-center rounded-circle bg-light"
+                                          style={{ width: '55px', height: '55px' }}>
+                                          <i className="fa fa-comment-medical text-primary"></i>
+                                      </div>
+                                      <div className="ms-4">
+                                          <p className="text-white mb-2">Positive</p>
+                                          <h5 className="text-white mb-0">Consultation</h5>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div className="col-6">
+                                  <div className="d-flex">
+                                      <div className="d-flex align-items-center justify-content-center rounded-circle bg-light"
+                                          style={{ width: '55px', height: '55px' }}>
+                                          <i className="fa fa-headphones text-primary"></i>
+                                      </div>
+                                      <div className="ms-4">
+                                          <p className="text-white mb-2">24 Hours</p>
+                                          <h5 className="text-white mb-0">Support</h5>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div className="col-lg-6">
+                      <div className="position-relative h-100">
+                          <img className="position-absolute" src="images/about_03.jpg" style={{ objectFit: 'cover' }}
+                              alt="about-image"></img>
+                      </div>
+                  </div>
+              </div>
+
           </div>
-          
-        </div>
-      </nav>
-
-
-
-      <div className="copyright-area">
-        <div className="container">
-          <div className="col-md-8">
-            <p>© 2024 Lifecare. All Rights Reserved</p>
-          </div>
-          <div className="col-md-4">
-            <p><i className="fa fa-phone"></i> (+1) 234 567 890</p>
-            <p><i className="fa fa-paper-plane"></i> info@gmail.com</p>
-          </div>
-        </div>
       </div>
-
-    </div>
   );
 }
 

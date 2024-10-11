@@ -1,29 +1,93 @@
 import './css/bootstrap.min.css';
 import './css/font-awesome.min.css';
-import React, { useState, useEffect, useRef } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-//import TutorialPage from './components/TutorialPage';  <TutorialPage />
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
 
 function App() {
+    const location = useLocation();
 
     return (
-        <Router>
-            <div className="App">
-                <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/about" element={<AboutPage />} />
-                    <Route path="/services" element={<AboutPage />} />
-                    <Route path="/doctors" element={<AboutPage />} />
-                    <Route path="/schedule" element={<AboutPage />} />
-                    <Route path="/order" element={<AboutPage />} />
-                    <Route path="/contact" element={<AboutPage />} />
-                    <Route path="/login" element={<AboutPage />} />
-                </Routes>
+        <div className="App">
+            <nav className="navbar navbar-custom navbar-fixed-top">
+                <div className="top-area">
+                    <div className="container">
+                        <div className="col-sm-6">
+                            <p>Monday - Saturday, 8am to 10pm </p>
+                        </div>
+                        <div className="col-sm-6">
+                            <p className="text-right">Call us now (+1) 234 567 890</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="container navigation">
+                    <a className="navbar-brand" href="index.html" style={{ marginTop: '5px' }}>
+                        <img src="images/logo.png" alt="" width="150" height="40" />
+                    </a>
+
+                    <div className="navbar-collapse navbar-right">
+                        <ul className="nav navbar-nav">
+                            <li className={location.pathname === "/" ? "active" : ""}>
+                                <Link to="/">Home</Link>
+                            </li>
+                            <li className={location.pathname === "/about" ? "active" : ""}>
+                                <Link to="/about">About Us</Link>
+                            </li>
+                            <li className={location.pathname === "/services" ? "active" : ""}>
+                                <Link to="/services">Services</Link>
+                            </li>
+                            <li className={location.pathname === "/doctors" ? "active" : ""}>
+                                <Link to="/doctors">Doctors</Link>
+                            </li>
+                            <li className={location.pathname === "/schedule" ? "active" : ""}>
+                                <Link to="/schedule">Appointments</Link>
+                            </li>
+                            <li className={location.pathname === "/order" ? "active" : ""}>
+                                <Link to="/order">Order Medicine</Link>
+                            </li>
+                            <li className={location.pathname === "/contact" ? "active" : ""}>
+                                <Link to="/contact">Contact</Link>
+                            </li>
+                            <li className={location.pathname === "/login" ? "active" : ""}>
+                                <Link to="/login">Log In</Link>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="/services" element={<AboutPage />} />
+                <Route path="/doctors" element={<AboutPage />} />
+                <Route path="/schedule" element={<AboutPage />} />
+                <Route path="/order" element={<AboutPage />} />
+                <Route path="/contact" element={<AboutPage />} />
+                <Route path="/login" element={<AboutPage />} />
+            </Routes>
+
+            <div className="copyright-area">
+                <div className="container">
+                    <div className="col-md-8">
+                        <p>© 2024 Lifecare. All Rights Reserved</p>
+                    </div>
+                    <div className="col-md-4">
+                        <p><i className="fa fa-phone"></i> (+1) 234 567 890</p>
+                        <p><i className="fa fa-paper-plane"></i> info@gmail.com</p>
+                    </div>
+                </div>
             </div>
-        </Router>
+        </div>
     );
 }
 
-export default App;
+export default function WrappedApp() {
+    return (
+        <Router>
+            <App />
+        </Router>
+    );
+}
