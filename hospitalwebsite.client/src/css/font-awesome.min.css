@@ -14,3 +14,19 @@
 .fa-paper-plane:before {
     content: "\f1d8"
 }
+
+.fa-check-circle:before {
+    content: "\f058"
+}
+
+.fa-headphones:before {
+    content: "\f025"
+}
+
+.fa-check:before {
+    content: "\f00c"
+}
+
+.fa-user-md:before {
+    content: "\f0f0"
+}

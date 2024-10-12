@@ -51,7 +51,7 @@ body {
         color: #157fda;
     }
 
-h2 {
+h1, h2 {
     font-weight: bold;
     font-size: 34px;
     padding: 0 0 10px 0;
@@ -87,6 +87,12 @@ h4 {
     font-weight: 600;
     font-size: 17px;
     color: #0071d1;
+}
+
+h5 {
+    margin-top: 0;
+    font-weight: bold;
+    font-size: 1.25rem
 }
 
 .message-box p {
@@ -152,10 +158,81 @@ a, .btn {
         background: linear-gradient(to right, #1d86df 0%, #39b49a 100%);
     }
 
+.AboutImage {
+    margin-top: -25%;
+    width: 50%;
+    background-color: #ffffff;
+    padding-top: 1rem;
+    padding-right: 1rem;
+}
+
 .copyright-area {
     padding: 20px 0px;
     background: #157fda;
     color: #fff;
     float: left;
     width: 100%;
+}
+
+.container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1320px
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-6 {
+    position: relative;
+    top: 35px;
+    left: 50px;
+    flex: 0 0 auto;
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+.overflow-hidden {
+    overflow: hidden !important
+}
+
+.d-flex {
+    display: flex !important
+}
+
+.flex-column {
+    flex-direction: column !important
+}
+
+.bg-primary {
+    background-color: #157fda !important
+}
+
+.bg-light {
+    background-color: #EFF5FF !important
+}
+
+.bg-white {
+    background-color: #fff !important
+}
+
+.rounded-circle {
+    border-radius: 50% !important
+}
+
+.icon {
+    position: relative;
+    top: 17px;
+    left: 18px;
+    color: #157fda;
+    z-index: 1;
+    font-size: 2rem;
+}
+
+.about-text {
+    position: relative;
+    left: 20px;
 }
