@@ -4,6 +4,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
+import DoctorPage from './DoctorPage';
 
 function App() {
     const location = useLocation();
@@ -62,7 +63,7 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/services" element={<AboutPage />} />
-                <Route path="/doctors" element={<AboutPage />} />
+                <Route path="/doctors" element={<DoctorPage />} />
                 <Route path="/schedule" element={<AboutPage />} />
                 <Route path="/order" element={<AboutPage />} />
                 <Route path="/contact" element={<AboutPage />} />
@@ -83,6 +84,23 @@ function App() {
         </div>
     );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export default function WrappedApp() {
     return (
