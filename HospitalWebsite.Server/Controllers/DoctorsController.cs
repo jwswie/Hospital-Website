@@ -1,13 +1,11 @@
 ﻿using HospitalWebsite.Server.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace HospitalWebsite.Server.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class DoctorsController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
@@ -20,7 +18,8 @@ namespace HospitalWebsite.Server.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Doctor>>> GetDoctors()
         {
-            return await _context.Doctors.ToListAsync();
+            return await _context.Doctors.ToListAsync(); 
         }
+
     }
 }

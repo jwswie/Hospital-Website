@@ -2,24 +2,21 @@ import './css/bootstrap.min.css';
 import './css/font-awesome.min.css';
 import './css/custom.css';
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function DoctorPage() {
     const [doctors, setDoctors] = useState([]);
 
     useEffect(() => {
-
-        const fetchDoctors = async () => {
-            try {
-                const response = await fetch("/api/Doctors");
-                const data = await response.json();
-                setDoctors(data);
-            } catch (error) {
-                console.error("Error fetching doctors:", error);
-            }
-        };
-
-        fetchDoctors();
-    }, []); 
+        axios.get('/api/doctors')
+            .then(response => {
+                console.log(response.data);
+                setDoctors(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching data: ', error);
+            });
+    }, []);
 
     return (
         <div className="clinic_version">
@@ -31,15 +28,15 @@ function DoctorPage() {
 
                 <div className="dev-list text-center">
                     <div className="row">
-                        {doctors.map((doctor) => (
-                            <div className="col-lg-4" key={doctor.doctorID}>
+                        {Array.isArray(doctors) && doctors.map((doctor) => (
+                            <div className="col-lg-4" key={doctor.DoctorID}>
                                 <div className="widget">
                                     <img src={`images/doctor_02.jpg`} alt="doctor-image" className="img-responsive" />
                                     <div className="widget-title">
-                                        <h3>{doctor.doctorName}</h3>
-                                        <small>{doctor.doctorSpecialty}</small>
+                                        <h3>{doctor.DoctorName}</h3>
+                                        <small>{doctor.DoctorSpecialty}</small>
                                     </div>
-                                    <p>{doctor.greetings}</p>
+                                    <p>{doctor.Greetings}</p>
 
                                     <a href="#" className="btn grd1"><i className="fa fa-facebook"></i></a>
                                     <a href="#" className="btn grd1"><i className="fa fa-github"></i></a>
@@ -56,3 +53,4 @@ function DoctorPage() {
 }
 
 export default DoctorPage;
+

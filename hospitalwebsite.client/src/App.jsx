@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
 import DoctorPage from './DoctorPage';
+import ContactPage from './ContactPage';
 
 function App() {
     const location = useLocation();
@@ -66,7 +67,7 @@ function App() {
                 <Route path="/doctors" element={<DoctorPage />} />
                 <Route path="/schedule" element={<AboutPage />} />
                 <Route path="/order" element={<AboutPage />} />
-                <Route path="/contact" element={<AboutPage />} />
+                <Route path="/contact" element={<ContactPage />} />
                 <Route path="/login" element={<AboutPage />} />
             </Routes>
 
