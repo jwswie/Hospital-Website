@@ -13,6 +13,7 @@ function App() {
     const location = useLocation();
 
     return (
+
         <div className="App">
             <nav className="navbar navbar-custom navbar-fixed-top">
                 <div className="top-area">

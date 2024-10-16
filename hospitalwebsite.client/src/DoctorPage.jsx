@@ -8,7 +8,7 @@ function DoctorPage() {
     const [doctors, setDoctors] = useState([]);
 
     useEffect(() => {
-        axios.get('https://localhost:3000/api/doctors')
+        axios.get('/api/Doctors')
             .then(response => {
                 console.log(response.data);
                 setDoctors(response.data);
@@ -29,15 +29,14 @@ function DoctorPage() {
                 <div className="dev-list text-center">
                     <div className="row">
                         {Array.isArray(doctors) && doctors.map((doctor) => (
-                            <div className="col-lg-4" key={doctor.DoctorID}>
+                            <div className="col-lg-4" key={doctor.doctorID}> 
                                 <div className="widget">
                                     <img src={`images/doctor_02.jpg`} alt="doctor-image" className="img-responsive" />
                                     <div className="widget-title">
-                                        <h3>{doctor.DoctorName}</h3>
-                                        <small>{doctor.DoctorSpecialty}</small>
+                                        <h3>{doctor.doctorName}</h3>  
+                                        <small>{doctor.doctorSpecialty}</small> 
                                     </div>
-                                    <p>{doctor.Greetings}</p>
-
+                                    <p>{doctor.greetings}</p> 
                                     <a href="#" className="btn grd1"><i className="fa fa-facebook"></i></a>
                                     <a href="#" className="btn grd1"><i className="fa fa-github"></i></a>
                                     <a href="#" className="btn grd1"><i className="fa fa-twitter"></i></a>
@@ -45,6 +44,7 @@ function DoctorPage() {
                                 </div>
                             </div>
                         ))}
+
                     </div>
                 </div>
             </div>
@@ -53,4 +53,3 @@ function DoctorPage() {
 }
 
 export default DoctorPage;
-
