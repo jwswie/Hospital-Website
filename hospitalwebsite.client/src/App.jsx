@@ -7,6 +7,7 @@ import AboutPage from './AboutPage';
 import DoctorPage from './DoctorPage';
 import ContactPage from './ContactPage';
 import LoginPage from './LoginPage';
+import AppointmentPage from './AppointmentPage';
 
 function App() {
     const location = useLocation();
@@ -17,7 +18,7 @@ function App() {
                 <div className="top-area">
                     <div className="container">
                         <div className="col-sm-6">
-                            <p>Monday - Saturday, 8am to 10pm </p>
+                            <p>Monday - Friday, 9am to 6pm </p>
                         </div>
                         <div className="col-sm-6">
                             <p className="text-right">Call us now (+1) 234 567 890</p>
@@ -66,7 +67,7 @@ function App() {
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/services" element={<AboutPage />} />
                 <Route path="/doctors" element={<DoctorPage />} />
-                <Route path="/schedule" element={<AboutPage />} />
+                <Route path="/schedule" element={<AppointmentPage />} />
                 <Route path="/order" element={<AboutPage />} />
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/login" element={<LoginPage />} />

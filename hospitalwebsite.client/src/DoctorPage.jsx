@@ -8,7 +8,7 @@ function DoctorPage() {
     const [doctors, setDoctors] = useState([]);
 
     useEffect(() => {
-        axios.get('/api/doctors')
+        axios.get('https://localhost:3000/api/doctors')
             .then(response => {
                 console.log(response.data);
                 setDoctors(response.data);
@@ -20,7 +20,7 @@ function DoctorPage() {
 
     return (
         <div className="clinic_version">
-            <div className="container">
+            <div className="container" style={{ marginTop: '200px' }}>
                 <div className="heading">
                     <img src="images/icon-logo.png" alt="Logo" />
                     <h2>Our Doctors</h2>
