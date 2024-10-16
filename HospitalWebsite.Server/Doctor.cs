@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace HospitalWebsite.Server.Models
+namespace HospitalWebsite.Server
 {
     public class Doctor
     {

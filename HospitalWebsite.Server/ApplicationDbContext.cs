@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using HospitalWebsite.Server.Models;
 
 namespace HospitalWebsite.Server
 {

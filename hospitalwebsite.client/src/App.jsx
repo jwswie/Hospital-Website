@@ -6,6 +6,7 @@ import HomePage from './HomePage';
 import AboutPage from './AboutPage';
 import DoctorPage from './DoctorPage';
 import ContactPage from './ContactPage';
+import LoginPage from './LoginPage';
 
 function App() {
     const location = useLocation();
@@ -68,7 +69,7 @@ function App() {
                 <Route path="/schedule" element={<AboutPage />} />
                 <Route path="/order" element={<AboutPage />} />
                 <Route path="/contact" element={<ContactPage />} />
-                <Route path="/login" element={<AboutPage />} />
+                <Route path="/login" element={<LoginPage />} />
             </Routes>
 
             <div className="copyright-area">
@@ -85,23 +86,6 @@ function App() {
         </div>
     );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 export default function WrappedApp() {
     return (

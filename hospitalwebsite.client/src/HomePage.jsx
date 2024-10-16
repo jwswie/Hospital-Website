@@ -26,7 +26,7 @@ function HomePage() {
                 <p> With state-of-the-art equipment and a commitment to excellence, we ensure that every patient receives 
                   the best possible care in a comfortable and compassionate environment. Your health is our top priority, 
                   and we are here to support you every step of the way </p>
-                  <Link to="/about"><a href="#" className="btn-light btn-brd effect-1">Learn More</a></Link>
+                 <a href="" className="btn-light btn-brd effect-1"><Link to="/about">Learn More</Link></a>
               </div>
             </div>
 
