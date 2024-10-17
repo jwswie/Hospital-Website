@@ -2830,6 +2830,22 @@
     content: "\f2b3"
 }
 
+.fa-vials:before {
+    content: "\f493"
+}
+
+.fa-x-ray:before {
+    content: "\f497"
+}
+
+.fa-brain:before {
+    content: "\f5dc"
+}
+
+.fa-tooth:before {
+    content: "\f5c9"
+}
+
 .fa-fa:before,
 .fa-font-awesome:before {
     content: "\f2b4"

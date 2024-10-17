@@ -8,12 +8,12 @@ import DoctorPage from './DoctorPage';
 import ContactPage from './ContactPage';
 import LoginPage from './LoginPage';
 import AppointmentPage from './AppointmentPage';
+import ServisePage from './ServisePage';
 
 function App() {
     const location = useLocation();
 
     return (
-
         <div className="App">
             <nav className="navbar navbar-custom navbar-fixed-top">
                 <div className="top-area">
@@ -66,7 +66,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/about" element={<AboutPage />} />
-                <Route path="/services" element={<AboutPage />} />
+                <Route path="/services" element={<ServisePage />} />
                 <Route path="/doctors" element={<DoctorPage />} />
                 <Route path="/schedule" element={<AppointmentPage />} />
                 <Route path="/order" element={<AboutPage />} />

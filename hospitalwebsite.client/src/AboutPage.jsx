@@ -22,7 +22,7 @@ function AboutPage() {
                         <div className="col-md-6">
                             <h1>Why You Should Trust Us? Get Know About Us!</h1>
                             <p>Your health is our priority. With a dedicated team of experienced doctors, modern facilities, and a commitment to patient-centered care, we strive to provide the highest level of medical services</p>
-                            <p>Our hospital is equipped with the latest technology, ensuring accurate diagnostics and effective treatments. We believe in transparent communication, personalized care, and building trust with every patient. When you choose us, you're not just getting healthcare - you’re becoming part of a community that truly cares. Your well-being is in safe hands</p>
+                            <p>Our hospital is equipped with the latest technology, ensuring accurate diagnostics and effective treatments. We believe in transparent communication, personalized care, and building trust with every patient. When you choose us, you are not just getting healthcare - you’re becoming part of a community that truly cares. Your well-being is in safe hands</p>
                             <p><i className="fa fa-check-circle" style={{ color: '#157fda' }}></i> Quality health care</p>
                             <p><i className="fa fa-check-circle" style={{ color: '#157fda' }}></i> Only Qualified Doctors</p>
                             <p><i className="fa fa-check-circle" style={{ color: '#157fda' }}></i> Medical Research Professionals</p>

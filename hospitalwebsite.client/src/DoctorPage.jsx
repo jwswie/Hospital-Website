@@ -38,7 +38,6 @@ function DoctorPage() {
                                     </div>
                                     <p>{doctor.greetings}</p> 
                                     <a href="#" className="btn grd1"><i className="fa fa-facebook"></i></a>
-                                    <a href="#" className="btn grd1"><i className="fa fa-github"></i></a>
                                     <a href="#" className="btn grd1"><i className="fa fa-twitter"></i></a>
                                     <a href="#" className="btn grd1"><i className="fa fa-linkedin"></i></a>
                                 </div>

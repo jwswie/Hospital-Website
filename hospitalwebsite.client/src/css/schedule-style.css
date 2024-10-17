@@ -16,13 +16,13 @@
     gap: 5px;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
-  
-  .events {
+
+.events {
     display: grid;
     grid-template-rows: repeat(10, 60px);
     border-radius: 5px;
-    background: #0071d1;
-  }
+    background: #EFF5FF;
+}
   
   .start-10 {
     grid-row-start: 2;
@@ -80,22 +80,26 @@
   body {
     font-family: system-ui, sans-serif;
   }
-  
-  .corp-fi {
-    background: #fff;
-  }
-  
-  .ent-law {
-    background: #fff;
-  }
-  
-  .writing {
-    background: #fff;
-  }
-  
-  .securities {
-    background: #fff;
-  }
+
+.corp-fi {
+    color: #fff;
+    background: #157fda;
+}
+
+.ent-law {
+    color: #fff;
+    background: #157fda;
+}
+
+.writing {
+    color: #fff;
+    background: #157fda;
+}
+
+.securities {
+    color: #fff;
+    background: #157fda;
+}
   
   .date {
     display: flex;

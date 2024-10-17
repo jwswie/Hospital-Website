@@ -34,7 +34,6 @@ namespace HospitalWebsite.Server
             app.UseRouting();
             app.UseAuthorization();
 
-            // Маршрутизация контроллеров
             app.MapControllers();
 
             app.Run();
