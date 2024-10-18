@@ -9,6 +9,7 @@ import ContactPage from './ContactPage';
 import LoginPage from './LoginPage';
 import AppointmentPage from './AppointmentPage';
 import ServisePage from './ServisePage';
+import ShopPage from './ShopPage';
 
 function App() {
     const location = useLocation();
@@ -69,7 +70,7 @@ function App() {
                 <Route path="/services" element={<ServisePage />} />
                 <Route path="/doctors" element={<DoctorPage />} />
                 <Route path="/schedule" element={<AppointmentPage />} />
-                <Route path="/order" element={<AboutPage />} />
+                <Route path="/order" element={<ShopPage />} />
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/login" element={<LoginPage />} />
             </Routes>
