@@ -353,6 +353,7 @@ a, .btn {
 .service-item {
     transition: .5s;
     margin-bottom: 20px;
+    box-sizing: border-box;
 }
 
     .service-item:hover {

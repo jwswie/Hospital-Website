@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace HospitalWebsite.Server
+namespace HospitalWebsite.Server.Models
 {
     public class Doctor
     {
@@ -17,5 +17,8 @@ namespace HospitalWebsite.Server
 
         [Required]
         public required string Greetings { get; set; }
+
+        [Required]
+        public required string DoctorPhoto { get; set; }
     }
 }

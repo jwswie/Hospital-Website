@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using HospitalWebsite.Server.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace HospitalWebsite.Server
 {
@@ -7,5 +8,7 @@ namespace HospitalWebsite.Server
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
         public DbSet<Doctor> Doctors { get; set; }
+        public DbSet<Service> Services { get; set; }
+        public DbSet <Appointment> Appointments { get; set; }
     }
 }

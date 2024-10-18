@@ -6,19 +6,19 @@ namespace HospitalWebsite.Server.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class DoctorsController : ControllerBase
+    public class ServicesController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
 
-        public DoctorsController(ApplicationDbContext context)
+        public ServicesController(ApplicationDbContext context)
         {
             _context = context;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Doctor>>> GetDoctors()
+        public async Task<ActionResult<IEnumerable<Service>>> GetServices()
         {
-            return await _context.Doctors.ToListAsync(); 
+            return await _context.Services.ToListAsync();
         }
 
     }

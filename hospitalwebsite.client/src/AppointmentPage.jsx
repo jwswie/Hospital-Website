@@ -1,96 +1,128 @@
 import './css/schedule-style.css';
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function AppointmentPage() {
+    const [appointments, setAppointments] = useState([]);
+    const [services, setServices] = useState([]);
+
+    useEffect(() => {
+        axios.get('/api/Appointments')
+            .then(response => {
+                setAppointments(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching appointments: ', error);
+            });
+
+        axios.get('/api/Services')
+            .then(response => {
+                setServices(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching services: ', error);
+            });
+    }, []);
+
+    const getServiceName = (serviceID) => {
+        const service = services.find(s => s.ServiceID === serviceID);
+        return service ? service.ServiceName : 'Unknown Service';
+    }
+
+    const getTimeNumeric = (time) => {
+        if (!time) return 0;
+
+        const [hour, modifier] = time.split(/(AM|PM)/i);
+        let numericHour = parseInt(hour, 10);
+
+        if (isNaN(numericHour)) return 0;
+
+        if (modifier.toUpperCase() === 'PM' && numericHour !== 12) {
+            numericHour += 12;
+        } else if (modifier.toUpperCase() === 'AM' && numericHour === 12) {
+            numericHour = 0;
+        }
+        return numericHour;
+    };
 
     return (
-
-        <div class="calendar" style={{ marginTop: '150px' }}>
-            <div class="timeline">
-                <div class="spacer"></div>
-                <div class="time-marker">9 AM</div>
-                <div class="time-marker">10 AM</div>
-                <div class="time-marker">11 AM</div>
-                <div class="time-marker">12 PM</div>
-                <div class="time-marker">1 PM</div>
-                <div class="time-marker">2 PM</div>
-                <div class="time-marker">3 PM</div>
-                <div class="time-marker">4 PM</div>
-                <div class="time-marker">5 PM</div>
-                <div class="time-marker">6 PM</div>
+        <div className="calendar" style={{ marginTop: '150px' }}>
+            <div className="timeline">
+                <div className="spacer"></div>
+                <div className="time-marker">9 AM</div>
+                <div className="time-marker">10 AM</div>
+                <div className="time-marker">11 AM</div>
+                <div className="time-marker">12 PM</div>
+                <div className="time-marker">1 PM</div>
+                <div className="time-marker">2 PM</div>
+                <div className="time-marker">3 PM</div>
+                <div className="time-marker">4 PM</div>
+                <div className="time-marker">5 PM</div>
+                <div className="time-marker">6 PM</div>
             </div>
-            <div class="days">
-                <div class="day mon">
-                    <div class="date">
-                        <p class="date-num">9</p>
-                        <p class="date-day">Mon</p>
+            <div className="days">
+                <div className="day mon">
+                    <div className="date">
+                        <p className="date-num">21</p>
+                        <p className="date-day">Mon</p>
                     </div>
-                    <div class="events">
-                        <div class="event start-2 end-5 securities">
-                            <p class="title">Securities Regulation</p>
-                            <p class="time">2 PM - 5 PM</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="day tues">
-                    <div class="date">
-                        <p class="date-num">12</p>
-                        <p class="date-day">Tues</p>
-                    </div>
-                    <div class="events">
-                        <div class="event start-10 end-12 corp-fi">
-                            <p class="title">Corporate Finance</p>
-                            <p class="time">10 AM - 12 PM</p>
-                        </div>
-                        <div class="event start-1 end-4 ent-law">
-                            <p class="title">Entertainment Law</p>
-                            <p class="time">1PM - 4PM</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="day wed">
-                    <div class="date">
-                        <p class="date-num">11</p>
-                        <p class="date-day">Wed</p>
-                    </div>
-                    <div class="events">
-                        <div class="event start-12 end-1 writing">
-                            <p class="title">Writing Seminar</p>
-                            <p class="time">11 AM - 12 PM</p>
-                        </div>
-                        <div class="event start-2 end-5 securities">
-                            <p class="title">Securities Regulation</p>
-                            <p class="time">2 PM - 5 PM</p>
-                        </div>
+                    <div className="events">
+                        {Array.isArray(appointments) && appointments
+                            .filter(appointment => appointment.appointmentDay === 'Monday')
+                            .map((appointment, index) => {
+                                const startHour = getTimeNumeric(appointment.timeFrom);
+                                const endHour = getTimeNumeric(appointment.timeTo);
+                                const serviceName = getServiceName(appointment.serviceID);
+
+                                return (
+                                    <div
+                                        key={index}
+                                        className={`event start-${startHour} end-${endHour} securities`}
+                                        title={serviceName}
+                                    >
+                                        <p className="title">{serviceName}</p>
+                                        <p className="time">{appointment.timeFrom} - {appointment.timeTo}</p>
+                                    </div>
+                                );
+                            })}
+
                     </div>
                 </div>
-                <div class="day thurs">
-                    <div class="date">
-                        <p class="date-num">12</p>
-                        <p class="date-day">Thurs</p>
+
+                <div className="day tues">
+                    <div className="date">
+                        <p className="date-num">22</p>
+                        <p className="date-day">Tues</p>
                     </div>
-                    <div class="events">
-                        <div class="event start-10 end-12 corp-fi">
-                            <p class="title">Corporate Finance</p>
-                            <p class="time">10 AM - 12 PM</p>
+                    <div className="events">
+                    </div>
+                    <div className="day wed">
+                        <div className="date">
+                            <p className="date-num">23</p>
+                            <p className="date-day">Wed</p>
                         </div>
-                        <div class="event start-1 end-4 ent-law">
-                            <p class="title">Entertainment Law</p>
-                            <p class="time">1PM - 4PM</p>
+                        <div className="events">
                         </div>
                     </div>
-                </div>
-                <div class="day fri">
-                    <div class="date">
-                        <p class="date-num">13</p>
-                        <p class="date-day">Fri</p>
+                    <div className="day thurs">
+                        <div className="date">
+                            <p className="date-num">24</p>
+                            <p className="date-day">Thurs</p>
+                        </div>
+                        <div className="events">
+                        </div>
                     </div>
-                    <div class="events">
+                    <div className="day fri">
+                        <div className="date">
+                            <p className="date-num">25</p>
+                            <p className="date-day">Fri</p>
+                        </div>
+                        <div className="events">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
     );
 }
 

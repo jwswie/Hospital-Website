@@ -31,7 +31,7 @@ function DoctorPage() {
                         {Array.isArray(doctors) && doctors.map((doctor) => (
                             <div className="col-lg-4" key={doctor.doctorID}> 
                                 <div className="widget">
-                                    <img src={`images/doctor_02.jpg`} alt="doctor-image" className="img-responsive" />
+                                    <img src={doctor.doctorPhoto} alt="doctor-image" className="img-responsive" />
                                     <div className="widget-title">
                                         <h3>{doctor.doctorName}</h3>  
                                         <small>{doctor.doctorSpecialty}</small> 
