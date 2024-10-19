@@ -10,5 +10,6 @@ namespace HospitalWebsite.Server
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet <Appointment> Appointments { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

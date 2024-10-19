@@ -1,6 +1,6 @@
 import './css/bootstrap.min.css';
 import './css/font-awesome.min.css';
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
@@ -13,6 +13,7 @@ import ShopPage from './ShopPage';
 
 function App() {
     const location = useLocation();
+    const [user, setUser] = useState(null); 
 
     return (
         <div className="App">
@@ -23,7 +24,7 @@ function App() {
                             <p>Monday - Friday, 9am to 6pm </p>
                         </div>
                         <div className="col-sm-6">
-                            <p className="text-right">Call us now (+1) 234 567 890</p>
+                            <p className="text-right">Call us now +1 (234) 567-8900</p>
                         </div>
                     </div>
                 </div>
@@ -57,7 +58,7 @@ function App() {
                                 <Link to="/contact">Contact</Link>
                             </li>
                             <li className={location.pathname === "/login" ? "active" : ""}>
-                                <Link to="/login">Log In</Link>
+                                {user ? <Link to="/login">{user.userName}</Link> : <Link to="/login">Log In</Link>}
                             </li>
                         </ul>
                     </div>
@@ -72,7 +73,7 @@ function App() {
                 <Route path="/schedule" element={<AppointmentPage />} />
                 <Route path="/order" element={<ShopPage />} />
                 <Route path="/contact" element={<ContactPage />} />
-                <Route path="/login" element={<LoginPage />} />
+                <Route path="/login" element={<LoginPage setUser={setUser} />} /> 
             </Routes>
 
             <div className="copyright-area">
@@ -81,7 +82,7 @@ function App() {
                         <p>© 2024 Lifecare. All Rights Reserved</p>
                     </div>
                     <div className="col-md-4">
-                        <p><i className="fa fa-phone"></i> (+1) 234 567 890</p>
+                        <p><i className="fa fa-phone"></i> +1 (234) 567-8900</p>
                         <p><i className="fa fa-paper-plane"></i> info@gmail.com</p>
                     </div>
                 </div>

@@ -80,7 +80,7 @@ function ContactPage() {
                         <h3>CONTACT US</h3>
                         <p><i className="fa fa-map-marker"></i> PO Box 16122 Collins Street West Victoria 8007 Australia</p>
                         <p><i className="fa fa-paper-plane"></i> info@gmail.com</p>
-                        <p><i className="fa fa-phone"></i> (+1) 234 567 890</p>
+                        <p><i className="fa fa-phone"></i> +1 (234) 567-8900</p>
                     </div>
                 </div>
                 <div className="col-md-4">
