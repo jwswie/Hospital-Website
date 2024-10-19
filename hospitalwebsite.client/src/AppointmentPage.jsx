@@ -25,25 +25,21 @@ function AppointmentPage() {
     }, []);
 
     const getServiceName = (serviceID) => {
-        const service = services.find(s => s.ServiceID === serviceID);
-        return service ? service.ServiceName : 'Unknown Service';
+        const service = services.find(s => s.serviceID === serviceID);
+        return service.serviceName;
     }
 
     const getTimeNumeric = (time) => {
         if (!time) return 0;
 
-        const [hour, modifier] = time.split(/(AM|PM)/i);
+        const [hour] = time.split(/(AM|PM)/i);
         let numericHour = parseInt(hour, 10);
 
         if (isNaN(numericHour)) return 0;
 
-        if (modifier.toUpperCase() === 'PM' && numericHour !== 12) {
-            numericHour += 12;
-        } else if (modifier.toUpperCase() === 'AM' && numericHour === 12) {
-            numericHour = 0;
-        }
         return numericHour;
     };
+
 
     return (
         <div className="calendar" style={{ marginTop: '150px' }}>
@@ -75,11 +71,8 @@ function AppointmentPage() {
                                 const serviceName = getServiceName(appointment.serviceID);
 
                                 return (
-                                    <div
-                                        key={index}
-                                        className={`event start-${startHour} end-${endHour} securities`}
-                                        title={serviceName}
-                                    >
+                                    <div key={index} className={`event start-${startHour} end-${endHour} securities`}
+                                        title={serviceName} >
                                         <p className="title">{serviceName}</p>
                                         <p className="time">{appointment.timeFrom} - {appointment.timeTo}</p>
                                     </div>
@@ -95,30 +88,96 @@ function AppointmentPage() {
                         <p className="date-day">Tues</p>
                     </div>
                     <div className="events">
-                    </div>
-                    <div className="day wed">
-                        <div className="date">
-                            <p className="date-num">23</p>
-                            <p className="date-day">Wed</p>
-                        </div>
                         <div className="events">
+                            {Array.isArray(appointments) && appointments
+                                .filter(appointment => appointment.appointmentDay === 'Tuesday')
+                                .map((appointment, index) => {
+                                    const startHour = getTimeNumeric(appointment.timeFrom);
+                                    const endHour = getTimeNumeric(appointment.timeTo);
+                                    const serviceName = getServiceName(appointment.serviceID);
+
+                                    return (
+                                        <div key={index} className={`event start-${startHour} end-${endHour} securities`}
+                                            title={serviceName} >
+                                            <p className="title">{serviceName}</p>
+                                            <p className="time">{appointment.timeFrom} - {appointment.timeTo}</p>
+                                        </div>
+                                    );
+                                })}
+
                         </div>
                     </div>
-                    <div className="day thurs">
-                        <div className="date">
-                            <p className="date-num">24</p>
-                            <p className="date-day">Thurs</p>
-                        </div>
-                        <div className="events">
-                        </div>
+                </div>
+
+                <div className="day wed">
+                    <div className="date">
+                        <p className="date-num">23</p>
+                        <p className="date-day">Wed</p>
                     </div>
-                    <div className="day fri">
-                        <div className="date">
-                            <p className="date-num">25</p>
-                            <p className="date-day">Fri</p>
-                        </div>
-                        <div className="events">
-                        </div>
+                    <div className="events">
+                        {Array.isArray(appointments) && appointments
+                            .filter(appointment => appointment.appointmentDay === 'Wednesday')
+                            .map((appointment, index) => {
+                                const startHour = getTimeNumeric(appointment.timeFrom);
+                                const endHour = getTimeNumeric(appointment.timeTo);
+                                const serviceName = getServiceName(appointment.serviceID);
+
+                                return (
+                                    <div key={index} className={`event start-${startHour} end-${endHour} securities`}
+                                        title={serviceName} >
+                                        <p className="title">{serviceName}</p>
+                                        <p className="time">{appointment.timeFrom} - {appointment.timeTo}</p>
+                                    </div>
+                                );
+                            })}
+                    </div>
+                </div>
+
+                <div className="day thurs">
+                    <div className="date">
+                        <p className="date-num">24</p>
+                        <p className="date-day">Thurs</p>
+                    </div>
+                    <div className="events">
+                        {Array.isArray(appointments) && appointments
+                            .filter(appointment => appointment.appointmentDay === 'Thursday')
+                            .map((appointment, index) => {
+                                const startHour = getTimeNumeric(appointment.timeFrom);
+                                const endHour = getTimeNumeric(appointment.timeTo);
+                                const serviceName = getServiceName(appointment.serviceID);
+
+                                return (
+                                    <div key={index} className={`event start-${startHour} end-${endHour} securities`}
+                                        title={serviceName} >
+                                        <p className="title">{serviceName}</p>
+                                        <p className="time">{appointment.timeFrom} - {appointment.timeTo}</p>
+                                    </div>
+                                );
+                            })}
+                    </div>
+                </div>
+
+                <div className="day fri">
+                    <div className="date">
+                        <p className="date-num">25</p>
+                        <p className="date-day">Fri</p>
+                    </div>
+                    <div className="events">
+                        {Array.isArray(appointments) && appointments
+                            .filter(appointment => appointment.appointmentDay === 'Friday')
+                            .map((appointment, index) => {
+                                const startHour = getTimeNumeric(appointment.timeFrom);
+                                const endHour = getTimeNumeric(appointment.timeTo);
+                                const serviceName = getServiceName(appointment.serviceID);
+
+                                return (
+                                    <div key={index} className={`event start-${startHour} end-${endHour} securities`}
+                                        title={serviceName} >
+                                        <p className="title">{serviceName}</p>
+                                        <p className="time">{appointment.timeFrom} - {appointment.timeTo}</p>
+                                    </div>
+                                );
+                            })}
                     </div>
                 </div>
             </div>
