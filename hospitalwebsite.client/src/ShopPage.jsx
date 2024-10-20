@@ -9,7 +9,7 @@ function ShopPage() {
     const [searchActive, setSearchActive] = useState(false);
     const [medicines, setMedicines] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
-    const [filter, setFilter] = useState('');  // State for filter option
+    const [filter, setFilter] = useState('');
 
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
@@ -31,7 +31,6 @@ function ShopPage() {
         setSearchActive(false);
     };
 
-    // Fetch medicines from the API
     useEffect(() => {
         axios.get('/api/Medicines')
             .then(response => {
@@ -43,13 +42,11 @@ function ShopPage() {
             });
     }, []);
 
-    // Filter and sort medicines based on search query and filter
     const getFilteredMedicines = () => {
         let filteredMedicines = medicines.filter(medicine =>
             medicine.medicineName.toLowerCase().includes(searchQuery.toLowerCase())
         );
 
-        // Apply sorting based on the filter
         switch (filter) {
             case 'priceLowToHigh':
                 filteredMedicines = filteredMedicines.sort((a, b) => a.medicinePrice - b.medicinePrice);
@@ -71,10 +68,10 @@ function ShopPage() {
     };
 
     const handleFilterChange = (filterOption) => {
-        setFilter(filterOption);  // Set the selected filter
+        setFilter(filterOption); 
     };
 
-    const filteredMedicines = getFilteredMedicines();  // Get filtered medicines
+    const filteredMedicines = getFilteredMedicines();
 
     return (
         <div className="clinic_version">
@@ -107,7 +104,7 @@ function ShopPage() {
                                         className="form-control"
                                         placeholder="Search keyword and hit enter..."
                                         value={searchQuery}
-                                        onChange={(e) => setSearchQuery(e.target.value)}  // Update search query state
+                                        onChange={(e) => setSearchQuery(e.target.value)} 
                                     />
                                 </form>
                             </div>
@@ -120,7 +117,6 @@ function ShopPage() {
                 </div>
 
                 <div className="row">
-                    {/* Map over filtered and sorted medicines */}
                     {Array.isArray(filteredMedicines) && filteredMedicines.map((medicine) => (
                         <div className="col-lg-4 item" style={{ textAlign: 'center' }} key={medicine.medicineID}>
                             <a href=""> <img src={medicine.medicinePhoto} alt="Image" /></a>
