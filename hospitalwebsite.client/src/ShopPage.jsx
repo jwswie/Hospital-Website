@@ -1,13 +1,15 @@
 import './css/bootstrap.min.css';
 import './css/font-awesome.min.css';
 import './css/order-style.css';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function ShopPage() {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [searchActive, setSearchActive] = useState(false);
     const [medicines, setMedicines] = useState([]);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [filter, setFilter] = useState('');  // State for filter option
 
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
@@ -29,6 +31,7 @@ function ShopPage() {
         setSearchActive(false);
     };
 
+    // Fetch medicines from the API
     useEffect(() => {
         axios.get('/api/Medicines')
             .then(response => {
@@ -40,6 +43,39 @@ function ShopPage() {
             });
     }, []);
 
+    // Filter and sort medicines based on search query and filter
+    const getFilteredMedicines = () => {
+        let filteredMedicines = medicines.filter(medicine =>
+            medicine.medicineName.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+
+        // Apply sorting based on the filter
+        switch (filter) {
+            case 'priceLowToHigh':
+                filteredMedicines = filteredMedicines.sort((a, b) => a.medicinePrice - b.medicinePrice);
+                break;
+            case 'priceHighToLow':
+                filteredMedicines = filteredMedicines.sort((a, b) => b.medicinePrice - a.medicinePrice);
+                break;
+            case 'nameAToZ':
+                filteredMedicines = filteredMedicines.sort((a, b) => a.medicineName.localeCompare(b.medicineName));
+                break;
+            case 'nameZToA':
+                filteredMedicines = filteredMedicines.sort((a, b) => b.medicineName.localeCompare(a.medicineName));
+                break;
+            default:
+                break;
+        }
+
+        return filteredMedicines;
+    };
+
+    const handleFilterChange = (filterOption) => {
+        setFilter(filterOption);  // Set the selected filter
+    };
+
+    const filteredMedicines = getFilteredMedicines();  // Get filtered medicines
+
     return (
         <div className="clinic_version">
             <div className="container" style={{ marginTop: '200px', marginBottom: '20px' }}>
@@ -50,12 +86,11 @@ function ShopPage() {
                         <button type="button" style={{ fontSize: '20px' }} className="btn btn-secondary btn-md dropdown-toggle px-4" onClick={toggleDropdown} > Reference </button>
                         {dropdownOpen && (
                             <div className="dropdown-menu show" aria-labelledby="dropdownMenuReference" style={{ fontSize: '15px', marginLeft: '10px' }}>
-                                <a className="dropdown-item" href="#">Relevance</a>
-                                <a className="dropdown-item" href="#">Name, A to Z</a>
-                                <a className="dropdown-item" href="#">Name, Z to A</a>
+                                <a className="dropdown-item" href="#" onClick={() => handleFilterChange('nameAToZ')}>Name, A to Z</a>
+                                <a className="dropdown-item" href="#" onClick={() => handleFilterChange('nameZToA')}>Name, Z to A</a>
                                 <div className="dropdown-divider"></div>
-                                <a className="dropdown-item" href="#">Price, low to high</a>
-                                <a className="dropdown-item" href="#">Price, high to low</a>
+                                <a className="dropdown-item" href="#" onClick={() => handleFilterChange('priceLowToHigh')}>Price, low to high</a>
+                                <a className="dropdown-item" href="#" onClick={() => handleFilterChange('priceHighToLow')}>Price, high to low</a>
                             </div>
                         )}
                     </div>
@@ -66,8 +101,14 @@ function ShopPage() {
                                 <a href="#" className="search-close js-search-close" onClick={handleSearchClose}>
                                     <span className="fa fa-close"></span>
                                 </a>
-                                <form action="#" method="post">
-                                    <input type="text" className="form-control" placeholder="Search keyword and hit enter..." />
+                                <form action="#" method="post" onSubmit={(e) => e.preventDefault()}>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        placeholder="Search keyword and hit enter..."
+                                        value={searchQuery}
+                                        onChange={(e) => setSearchQuery(e.target.value)}  // Update search query state
+                                    />
                                 </form>
                             </div>
                             <h2 style={{ fontSize: '30px' }}>Search by Name</h2>
@@ -76,13 +117,11 @@ function ShopPage() {
                             </a>
                         </div>
                     </div>
-
-
                 </div>
 
                 <div className="row">
-
-                    {Array.isArray(medicines) && medicines.map((medicine) => (
+                    {/* Map over filtered and sorted medicines */}
+                    {Array.isArray(filteredMedicines) && filteredMedicines.map((medicine) => (
                         <div className="col-lg-4 item" style={{ textAlign: 'center' }} key={medicine.medicineID}>
                             <a href=""> <img src={medicine.medicinePhoto} alt="Image" /></a>
                             <h3 className="text-dark">{medicine.medicineName}</h3>
