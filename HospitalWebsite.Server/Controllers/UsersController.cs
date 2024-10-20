@@ -1,5 +1,7 @@
 ﻿using HospitalWebsite.Server.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace HospitalWebsite.Server.Controllers
 {
@@ -26,6 +28,19 @@ namespace HospitalWebsite.Server.Controllers
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(Signup), new { id = user.UserID }, user);
+        }
+
+        [HttpGet("login/{phoneNumber}")]
+        public IActionResult Login(string phoneNumber)
+        {
+            var user = _context.Users.FirstOrDefault(u => u.PhoneNumber == phoneNumber);
+
+            if (user == null)
+            {
+                return NotFound(new { message = "Phone number not found. Please sign up" });
+            }
+
+            return Ok(user);
         }
     }
 }

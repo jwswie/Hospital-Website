@@ -23,7 +23,7 @@ function LoginPage({ setUser }) {
             if (checkResponse.ok) {
                 const exists = await checkResponse.json();
                 if (exists) {
-                    alert('Phone number already registered. Please log in.');
+                    alert('Phone number already registered. Please log in');
                     return;
                 }
             }
@@ -63,12 +63,14 @@ function LoginPage({ setUser }) {
 
         try {
             const loginResponse = await fetch(`https://localhost:5173/api/users/login/${phoneNumber}`);
+
             if (loginResponse.ok) {
                 const user = await loginResponse.json();
-                setUser(user);
-                navigate('/'); 
-            } else {
-                alert('Phone number not found. Please sign up');
+                setUser(user); 
+                navigate('/');
+            }
+            else {
+                alert('Phone number not found. Please sign up.');
             }
         } catch (error) {
             console.error('Error logging in:', error);
