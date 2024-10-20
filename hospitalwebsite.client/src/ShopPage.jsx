@@ -2,11 +2,12 @@ import './css/bootstrap.min.css';
 import './css/font-awesome.min.css';
 import './css/order-style.css';
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 function ShopPage() {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [searchActive, setSearchActive] = useState(false);
+    const [medicines, setMedicines] = useState([]);
 
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
@@ -27,6 +28,17 @@ function ShopPage() {
         e.preventDefault();
         setSearchActive(false);
     };
+
+    useEffect(() => {
+        axios.get('/api/Medicines')
+            .then(response => {
+                console.log(response.data);
+                setMedicines(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching data: ', error);
+            });
+    }, []);
 
     return (
         <div className="clinic_version">
@@ -69,37 +81,14 @@ function ShopPage() {
                 </div>
 
                 <div className="row">
-                    <div className="col-lg-4 item" style={{ textAlign: 'center' }}>
-                        <a href=""> <img src="images/product_01.png" alt="Image" /></a>
-                        <h3 className="text-dark">Bioderma</h3>
-                        <p className="price">$55.00</p>
-                    </div>
-                    <div className="col-lg-4 item" style={{ textAlign: 'center' }}>
-                        <a href=""> <img src="images/product_02.png" alt="Image" /></a>
-                        <h3 className="text-dark">Chanca Piedra</h3>
-                        <p className="price">$70.00</p>
-                    </div>
-                    <div className="col-lg-4 item" style={{ textAlign: 'center' }}>
-                        <a href=""> <img src="images/product_03.png" alt="Image" /></a>
-                        <h3 className="text-dark">Umcka Cold Care</h3>
-                        <p className="price">$120.00</p>
-                    </div>
 
-                    <div className="col-lg-4 item" style={{ textAlign: 'center' }}>
-                        <a href=""> <img src="images/product_04.png" alt="Image" /></a>
-                        <h3 className="text-dark">Cetyl Pure</h3>
-                        <p className="price">$20.00</p>
-                    </div>
-                    <div className="col-lg-4 item" style={{ textAlign: 'center' }}>
-                        <a href=""> <img src="images/product_05.png" alt="Image" /></a>
-                        <h3 className="text-dark">CLA Core</h3>
-                        <p className="price">$38.00</p>
-                    </div>
-                    <div className="col-lg-4 item" style={{ textAlign: 'center' }}>
-                        <a href=""> <img src="images/product_06.png" alt="Image" /></a>
-                        <h3 className="text-dark">Poo Pourri</h3>
-                        <p className="price">$38.00</p>
-                    </div>
+                    {Array.isArray(medicines) && medicines.map((medicine) => (
+                        <div className="col-lg-4 item" style={{ textAlign: 'center' }} key={medicine.medicineID}>
+                            <a href=""> <img src={medicine.medicinePhoto} alt="Image" /></a>
+                            <h3 className="text-dark">{medicine.medicineName}</h3>
+                            <p className="price">${medicine.medicinePrice}</p>
+                        </div>
+                    ))}
                 </div>
 
                 <div className="col-md-12" style={{ marginTop: '3rem', textAlign: 'center' }}>
