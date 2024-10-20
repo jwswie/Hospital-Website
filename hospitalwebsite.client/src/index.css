@@ -384,7 +384,6 @@ a, .btn {
     padding-right: calc(var(--bs-gutter-x) / 2);
     padding-left: calc(var(--bs-gutter-x) / 2);
     margin-top: var(--bs-gutter-y);
-    
 }
 
 .g-4, .gy-4 {
@@ -418,3 +417,107 @@ a, .btn {
 .fs-4 {
     font-size: calc(1.275rem + .3vw) !important
 }
+
+.appointment-form {
+    float: left;
+    width: 100%;
+    background: #fff;
+    min-height: 425px;
+    box-shadow: 0 0 50px -22px rgba(0,0,0,0.3);
+    padding: 20px;
+}
+
+    .appointment-form h3 {
+        float: left;
+        margin: 0;
+        background: linear-gradient(to right, #39b49a 0%, #1d86df 100%);
+        width: 100%;
+        color: #fff;
+        padding: 15px 25px;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+.center {
+    float: left;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+}
+
+.services {
+    width: 100%;
+    background: linear-gradient(to right, #1d86df 0%, #39b49a 100%);
+    padding: 75px 0;
+}
+
+.services {
+    width: 100%;
+    padding: 75px 0;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    float: left;
+    width: 100%;
+}
+
+.form-group button {
+    background: linear-gradient(to right, #1d86df 0%, #39b49a 100%);
+    border: none;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    color: #fff;
+    padding: 8px 30px;
+    border-radius: 50px;
+    transition: ease all 1s;
+    font-weight: 600;
+}
+
+    .form-group button:hover, .form-group button:focus {
+        background: linear-gradient(to right, #39b49a 0%, #1d86df 100%);
+    }
+
+.select-section div.form-group:nth-child(1) {
+    float: left;
+    width: 49%;
+    margin-right: 2%;
+}
+
+.select-section div.form-group:nth-child(2) {
+    float: left;
+    width: 49%;
+}
+
+.form-group {
+    float: left;
+    width: 100%;
+    margin: 0;
+}
+
+    .form-group input, .form-group select {
+        float: left;
+        width: 100%;
+        border-radius: 0;
+        border: solid #ccc 1px;
+        padding: 8px 15px;
+        font-weight: 400;
+        font-size: 13px;
+        margin: 12px 0 0;
+        box-shadow: none;
+        color: #333;
+        height: 44px;
+    }
+
+    .form-group textarea {
+        float: left;
+        width: 100%;
+        border-radius: 0;
+        border: solid #ccc 1px;
+        padding: 8px 15px;
+        font-weight: 400;
+        font-size: 13px;
+        margin: 12px 0 0;
+        box-shadow: none;
+        color: #333;
+        height: 90px;
+    }

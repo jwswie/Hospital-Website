@@ -2,6 +2,7 @@ import './css/bootstrap.min.css';
 import './css/font-awesome.min.css';
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 function ServisePage() {
 
     const [services, setServices] = useState([]);
@@ -33,9 +34,11 @@ function ServisePage() {
                                 </div>
                                 <h4>{service.serviceName}</h4>
                                 <p>{service.serviceDescription}</p>
-                                <a className="btn" href="" style={{ fontSize: '15px' }}>
-                                    <i className="fa fa-plus text-primary me-3" style={{ marginLeft: '5px' }}></i>Appointment
-                                </a>
+                                <Link to="/booking">
+                                    <a className="btn" href="" style={{ fontSize: '15px' }}>
+                                        <i className="fa fa-plus text-primary me-3" style={{ marginLeft: '5px' }}></i>Appointment
+                                    </a>
+                                </Link>
                             </div>
                         </div>
                     ))}

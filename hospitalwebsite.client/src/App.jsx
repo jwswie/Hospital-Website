@@ -10,6 +10,7 @@ import LoginPage from './LoginPage';
 import AppointmentPage from './AppointmentPage';
 import ServisePage from './ServisePage';
 import ShopPage from './ShopPage';
+import BookingPage from './BookingPage';
 
 function App() {
     const location = useLocation();
@@ -64,7 +65,7 @@ function App() {
                     </div>
                 </div>
             </nav>
-
+            
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/about" element={<AboutPage />} />
@@ -74,6 +75,7 @@ function App() {
                 <Route path="/order" element={<ShopPage />} />
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/login" element={<LoginPage setUser={setUser} />} /> 
+                <Route path="/booking" element={<BookingPage />} />
             </Routes>
 
             <div className="copyright-area">
