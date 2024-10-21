@@ -1,6 +1,7 @@
 import './css/bootstrap.min.css';
 import './css/font-awesome.min.css';
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 function BookingPage() {
 
@@ -69,7 +70,7 @@ function BookingPage() {
                             <div class="col-lg-12">
                                 <div class="row">
                                     <div class="form-group">
-                                        <div class="center"><button type="submit">Submit</button></div>
+                                        <Link to="/success"><div class="center"><button type="submit">Submit</button></div></Link>
                                     </div>
                                 </div>
                             </div>

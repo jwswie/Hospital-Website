@@ -11,6 +11,7 @@ import AppointmentPage from './AppointmentPage';
 import ServisePage from './ServisePage';
 import ShopPage from './ShopPage';
 import BookingPage from './BookingPage';
+import SuccessPage from './SuccessPage'
 
 function App() {
     const location = useLocation();
@@ -76,6 +77,7 @@ function App() {
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/login" element={<LoginPage setUser={setUser} />} /> 
                 <Route path="/booking" element={<BookingPage />} />
+                <Route path="/success" element={<SuccessPage />} />
             </Routes>
 
             <div className="copyright-area">
