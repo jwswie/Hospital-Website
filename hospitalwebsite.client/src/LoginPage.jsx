@@ -14,7 +14,6 @@ function LoginPage({ setUser }) {
 
         if (!phonePattern.test(phoneNumber)) {
             alert("Invalid phone number format. Example: +1 (234) 567-8901");
-            console.error('Invalid phone number format');
             return;
         }
 
@@ -47,9 +46,8 @@ function LoginPage({ setUser }) {
 
             if (response.ok) {
                 const result = await response.json();
-                console.log('User registered:', result);
-                setUser(result); 
-                navigate('/');  
+                setUser(result);
+                navigate('/success', { state: { userID: result.userID, message: 'You have registered successfully' } });
             } else {
                 console.error('Failed to register user');
             }
@@ -66,10 +64,9 @@ function LoginPage({ setUser }) {
 
             if (loginResponse.ok) {
                 const user = await loginResponse.json();
-                setUser(user); 
-                navigate('/');
-            }
-            else {
+                setUser(user);
+                navigate('/success', { state: { userID: user.userID, message: 'You have logged in successfully' } });
+            } else {
                 alert('Phone number not found. Please sign up.');
             }
         } catch (error) {
@@ -84,13 +81,7 @@ function LoginPage({ setUser }) {
                 <div className="login form">
                     <header>Login</header>
                     <form onSubmit={handleLogin}>
-                        <input
-                            type="text"
-                            placeholder="Enter your phone number"
-                            value={phoneNumber}
-                            onChange={(e) => setPhoneNumber(e.target.value)}
-                            required
-                        />
+                        <input type="text" placeholder="Enter your phone number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required />
                         <input type="submit" className="button" value="Login" />
                     </form>
                     <div className="signup">
@@ -100,20 +91,8 @@ function LoginPage({ setUser }) {
                 <div className="registration form">
                     <header>Signup</header>
                     <form onSubmit={handleSignup}>
-                        <input
-                            type="text"
-                            placeholder="Enter your full name"
-                            value={fullName}
-                            onChange={(e) => setFullName(e.target.value)}
-                            required
-                        />
-                        <input
-                            type="text"
-                            placeholder="Enter your phone number"
-                            value={phoneNumber}
-                            onChange={(e) => setPhoneNumber(e.target.value)}
-                            required
-                        />
+                        <input type="text" placeholder="Enter your full name" value={fullName} onChange={(e) => setFullName(e.target.value)} required />
+                        <input type="text" placeholder="Enter your phone number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required />
                         <input type="submit" className="button" value="Signup" />
                     </form>
                     <div className="signup">

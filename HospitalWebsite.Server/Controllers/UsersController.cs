@@ -1,7 +1,5 @@
 ﻿using HospitalWebsite.Server.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace HospitalWebsite.Server.Controllers
 {

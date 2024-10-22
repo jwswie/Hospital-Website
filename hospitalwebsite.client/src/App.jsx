@@ -11,11 +11,12 @@ import AppointmentPage from './AppointmentPage';
 import ServisePage from './ServisePage';
 import ShopPage from './ShopPage';
 import BookingPage from './BookingPage';
-import SuccessPage from './SuccessPage'
+import SuccessPage from './SuccessPage';
+import ProfilePage from './ProfilePage';
 
 function App() {
     const location = useLocation();
-    const [user, setUser] = useState(null); 
+    const [user, setUser] = useState(null);
 
     return (
         <div className="App">
@@ -59,14 +60,14 @@ function App() {
                             <li className={location.pathname === "/contact" ? "active" : ""}>
                                 <Link to="/contact">Contact</Link>
                             </li>
-                            <li className={location.pathname === "/login" ? "active" : ""}>
-                                {user ? <Link to="/login">{user.userName}</Link> : <Link to="/login">Log In</Link>}
+                            <li className={location.pathname === "/login" || location.pathname === "/profile" ? "active" : ""}>
+                                {user ? <Link to="/profile" state={{ user: user }}>{user.userName}</Link> : <Link to="/login">Log In</Link>}
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
-            
+
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/about" element={<AboutPage />} />
@@ -75,9 +76,10 @@ function App() {
                 <Route path="/schedule" element={<AppointmentPage />} />
                 <Route path="/order" element={<ShopPage />} />
                 <Route path="/contact" element={<ContactPage />} />
-                <Route path="/login" element={<LoginPage setUser={setUser} />} /> 
+                <Route path="/login" element={<LoginPage setUser={setUser} />} />
                 <Route path="/booking" element={<BookingPage />} />
                 <Route path="/success" element={<SuccessPage />} />
+                <Route path="/profile" element={<ProfilePage setUser={setUser} />} />
             </Routes>
 
             <div className="copyright-area">

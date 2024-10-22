@@ -11,8 +11,9 @@ namespace HospitalWebsite.Server.Models
         public int AppointmentID { get; set; }
 
         [Required]
-        [MaxLength(100)]
         public required int ServiceID { get; set; }
+
+        public int? UserID { get; set; }
 
         [Required]
         [MaxLength(100)]
