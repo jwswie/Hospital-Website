@@ -21,5 +21,19 @@ namespace HospitalWebsite.Server.Controllers
             return await _context.Appointments.ToListAsync();
         }
 
+        [HttpPost]
+        public async Task<ActionResult<Appointment>> PostAppointment(Appointment appointment)
+        {
+            if (appointment == null)
+            {
+                return BadRequest("Invalid appointment data.");
+            }
+
+            _context.Appointments.Add(appointment);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetAppointments), new { id = appointment.AppointmentID }, appointment);
+        }
+
     }
 }

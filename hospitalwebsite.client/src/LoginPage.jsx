@@ -65,7 +65,7 @@ function LoginPage({ setUser }) {
             if (loginResponse.ok) {
                 const user = await loginResponse.json();
                 setUser(user);
-                navigate('/success', { state: { userID: user.userID, message: 'You have logged in successfully' } });
+                navigate('/success', { state: { message: 'You have logged in successfully' } });
             } else {
                 alert('Phone number not found. Please sign up.');
             }

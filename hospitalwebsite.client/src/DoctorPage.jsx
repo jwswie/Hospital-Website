@@ -10,7 +10,6 @@ function DoctorPage() {
     useEffect(() => {
         axios.get('/api/Doctors')
             .then(response => {
-                console.log(response.data);
                 setDoctors(response.data);
             })
             .catch(error => {

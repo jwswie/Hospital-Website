@@ -52,7 +52,7 @@ function App() {
                                 <Link to="/doctors">Doctors</Link>
                             </li>
                             <li className={location.pathname === "/schedule" ? "active" : ""}>
-                                <Link to="/schedule">Appointments</Link>
+                                {user ? <Link to="/schedule" state={{ user: user }}>Appointments</Link> : <Link to="/success" state={{ message2: 'You dont have any appointments!', message: 'Log In or Register to see the appointments' }}>Appointments</Link>}
                             </li>
                             <li className={location.pathname === "/order" ? "active" : ""}>
                                 <Link to="/order">Order Medicine</Link>
@@ -73,11 +73,11 @@ function App() {
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/services" element={<ServisePage />} />
                 <Route path="/doctors" element={<DoctorPage />} />
-                <Route path="/schedule" element={<AppointmentPage />} />
+                <Route path="/schedule" element={<AppointmentPage user={user} />} />
                 <Route path="/order" element={<ShopPage />} />
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/login" element={<LoginPage setUser={setUser} />} />
-                <Route path="/booking" element={<BookingPage />} />
+                <Route path="/booking" element={<BookingPage user={user} />} />
                 <Route path="/success" element={<SuccessPage />} />
                 <Route path="/profile" element={<ProfilePage setUser={setUser} />} />
             </Routes>
