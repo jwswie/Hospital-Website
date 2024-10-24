@@ -12,5 +12,6 @@ namespace HospitalWebsite.Server
         public DbSet <Appointment> Appointments { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Medicine> Medicines { get; set; }
+        public DbSet<Order> Orders { get; set; }
     }
 }

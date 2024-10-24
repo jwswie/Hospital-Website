@@ -81,7 +81,7 @@ function App() {
                 <Route path="/booking" element={<BookingPage user={user} />} />
                 <Route path="/success" element={<SuccessPage />} />
                 <Route path="/profile" element={<ProfilePage setUser={setUser} />} />
-                <Route path="/medicine" element={<MedicinePage />} />
+                <Route path="/medicine" element={<MedicinePage user={user} />} />
             </Routes>
 
             <div className="copyright-area">

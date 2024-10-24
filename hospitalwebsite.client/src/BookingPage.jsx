@@ -104,7 +104,7 @@ function BookingPage({ user }) {
                     navigate('/success', { state: { message: 'Your appointment has been booked!', message2: 'Success!' } });
                 })
                 .catch(error => {
-                    console.error('Error booking appointment:', error);
+                    alert('Error booking appointment:', error);
                 });
         } else {
             alert('Please select a day and time for your appointment.');

@@ -2,20 +2,20 @@ import './css/bootstrap.min.css';
 import './css/font-awesome.min.css';
 import './css/FontStyle.css';
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-function MedicinePage() {
+function MedicinePage({ user }) {
     const location = useLocation();
-    const { medicineID } = location.state || {}; // Получаем medicineID из переданных параметров
+    const { medicineID } = location.state || {};
+    const navigate = useNavigate();
 
-    const [medicine, setMedicine] = useState(null); // Состояние для хранения данных о лекарстве
-    const [loading, setLoading] = useState(true); // Состояние загрузки
-    const [error, setError] = useState(null); // Состояние для хранения ошибки
+    const [medicine, setMedicine] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         if (medicineID) {
-            // Запрос к API для получения информации о конкретном лекарстве
             axios.get(`/api/Medicines/${medicineID}`)
                 .then(response => {
                     setMedicine(response.data);
@@ -32,16 +32,34 @@ function MedicinePage() {
         }
     }, [medicineID]);
 
+    const handleBuyNow = () => {
+
+        const newOrder = {
+            userID: user.userID,
+            medicineID: medicineID
+        };
+
+        axios.post('/api/Orders', newOrder)
+            .then(response => {
+                console.log('Order created:', response.data);
+
+                navigate('/success', { state: { message: 'Your order was successfully completed!', message2: 'Thank you!' } });
+            })
+            .catch(error => {
+                console.error('Error creating order: ', error);
+            });
+    };
+
     if (loading) {
-        return <div>Loading...</div>; // Отображение индикатора загрузки
+        return <div>Loading...</div>;
     }
 
     if (error) {
-        return <div>Error: {error}</div>; // Отображение сообщения об ошибке
+        return <div>Error: {error}</div>;
     }
 
     if (!medicine) {
-        return <div>No medicine data available.</div>; // Если данных нет
+        return <div>No medicine data available.</div>;
     }
 
     return (
@@ -57,9 +75,7 @@ function MedicinePage() {
                         <p>{medicine.medicineDescription}</p>
                         <h4><strong style={{ color: '#000' }}>${medicine.medicinePrice}</strong></h4>
 
-                        <Link to="/">
-                            <a href="#" style={{ marginTop: '20px' }} className="btn-light btn-brd effect-1">Add To Cart</a>
-                        </Link>
+                        <button onClick={handleBuyNow} style={{ marginTop: '20px' }} className="btn-light btn-brd effect-1">Buy Now</button>
 
                         <p style={{ color: '#1d86df', marginTop: '20px' }}>Specifications</p>
 
@@ -76,7 +92,7 @@ function MedicinePage() {
                                     </tr>
                                     <tr>
                                         <td>HEALTHCARE PROVIDERS ONLY</td>
-                                        <td className="bg-light">{medicine.healthcareProvidersOnly}</td>
+                                        <td className="bg-light">{medicine.healthcareProvidersOnly ? 'Yes' : 'No'}</td>
                                     </tr>
                                     <tr>
                                         <td>MEDICATION ROUTE</td>
