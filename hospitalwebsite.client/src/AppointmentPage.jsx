@@ -6,8 +6,6 @@ function AppointmentPage({ user }) {
     const [appointments, setAppointments] = useState([]);
     const [services, setServices] = useState([]);
 
-    console.log('User: ' + user);
-
     useEffect(() => {
         if (user) {
             axios.get('/api/Appointments')

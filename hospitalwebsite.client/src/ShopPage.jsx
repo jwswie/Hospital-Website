@@ -2,6 +2,7 @@ import './css/bootstrap.min.css';
 import './css/font-awesome.min.css';
 import './css/order-style.css';
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 function ShopPage() {
@@ -119,7 +120,7 @@ function ShopPage() {
                 <div className="row">
                     {Array.isArray(filteredMedicines) && filteredMedicines.map((medicine) => (
                         <div className="col-lg-4 item" style={{ textAlign: 'center' }} key={medicine.medicineID}>
-                            <a href=""> <img src={medicine.medicinePhoto} alt="Image" /></a>
+                            <Link to="/medicine" state={{ medicineID: medicine.medicineID }}> <img src={medicine.medicinePhoto} alt="Image" /></Link>
                             <h3 className="text-dark">{medicine.medicineName}</h3>
                             <p className="price">${medicine.medicinePrice}</p>
                         </div>

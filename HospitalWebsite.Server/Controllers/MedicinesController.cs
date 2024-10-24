@@ -20,5 +20,17 @@ namespace HospitalWebsite.Server.Controllers
         {
             return await _context.Medicines.ToListAsync();
         }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Medicine>> GetMedicineById(int id)
+        {
+            var medicine = await _context.Medicines.FindAsync(id);
+            if (medicine == null)
+            {
+                return NotFound();
+            }
+            return medicine;
+        }
+
     }
 }

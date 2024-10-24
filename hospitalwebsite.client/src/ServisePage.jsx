@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-function ServisePage() {
+function ServisePage({ user }) {
     const [services, setServices] = useState([]);
 
     useEffect(() => {
@@ -33,11 +33,14 @@ function ServisePage() {
                                 </div>
                                 <h4>{service.serviceName}</h4>
                                 <p>{service.serviceDescription}</p>
-                                <Link to={{ pathname: '/booking' }} state={{ serviceName: service.serviceName }}>
-                                    <button className="btn" style={{ fontSize: '15px' }}>
-                                        <i className="fa fa-plus text-primary me-3" style={{ marginLeft: '5px' }}></i>Appointment
-                                    </button>
-                                </Link>
+
+                                {(!user) && (
+                                    <Link to={{ pathname: '/booking' }} state={{ serviceName: service.serviceName }}>
+                                        <button className="btn" style={{ fontSize: '15px' }}>
+                                            <i className="fa fa-plus text-primary me-3" style={{ marginLeft: '5px' }}></i>Appointment
+                                        </button>
+                                    </Link>
+                                )}
                             </div>
                         </div>
                     ))}

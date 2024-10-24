@@ -13,6 +13,7 @@ import ShopPage from './ShopPage';
 import BookingPage from './BookingPage';
 import SuccessPage from './SuccessPage';
 import ProfilePage from './ProfilePage';
+import MedicinePage from './MedicinePage';
 
 function App() {
     const location = useLocation();
@@ -46,7 +47,7 @@ function App() {
                                 <Link to="/about">About Us</Link>
                             </li>
                             <li className={location.pathname === "/services" ? "active" : ""}>
-                                <Link to="/services">Services</Link>
+                                <Link to="/services" state={{ user: user }}>Services</Link>
                             </li>
                             <li className={location.pathname === "/doctors" ? "active" : ""}>
                                 <Link to="/doctors">Doctors</Link>
@@ -71,7 +72,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/about" element={<AboutPage />} />
-                <Route path="/services" element={<ServisePage />} />
+                <Route path="/services" element={<ServisePage user={user} />} />
                 <Route path="/doctors" element={<DoctorPage />} />
                 <Route path="/schedule" element={<AppointmentPage user={user} />} />
                 <Route path="/order" element={<ShopPage />} />
@@ -80,6 +81,7 @@ function App() {
                 <Route path="/booking" element={<BookingPage user={user} />} />
                 <Route path="/success" element={<SuccessPage />} />
                 <Route path="/profile" element={<ProfilePage setUser={setUser} />} />
+                <Route path="/medicine" element={<MedicinePage />} />
             </Routes>
 
             <div className="copyright-area">
