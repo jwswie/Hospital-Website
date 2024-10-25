@@ -14,8 +14,8 @@ function AboutPage() {
                     <div className="row">
                         <div className="col-md-6">
                             <div className="d-flex flex-column">
-                                <img style={{ width: '75%', alignSelf: 'flex-end' }} src="images/about_01.jpg" alt="about-image"></img>
-                                <img className='AboutImage' src="images/about_02.jpg" alt="about-image"></img>
+                                <img style={{ width: '75%', alignSelf: 'flex-end' }} src="https://hospitalblobstorage.blob.core.windows.net/images/about_01.jpg" alt="about-image"></img>
+                                <img className='AboutImage' src="https://hospitalblobstorage.blob.core.windows.net/images/about_02.jpg" alt="about-image"></img>
                             </div>
                         </div>
 
@@ -93,7 +93,7 @@ function AboutPage() {
                             </div>
                             <div className="col-lg-6">
                                 <div style={{ position: 'relative' }}>
-                                    <img src="images/about_03.jpg" style={{ objectFit: 'cover', position: 'absolute' }} alt="about-image"></img>
+                                    <img src="https://hospitalblobstorage.blob.core.windows.net/images/about_03.jpg" style={{ objectFit: 'cover', position: 'absolute' }} alt="about-image"></img>
                                 </div>
                             </div>
                         </div>

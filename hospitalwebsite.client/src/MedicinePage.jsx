@@ -23,11 +23,11 @@ function MedicinePage({ user }) {
                 })
                 .catch(error => {
                     console.error('Error fetching data: ', error);
-                    setError('Unable to fetch medicine data.');
+                    setError('Unable to fetch medicine data');
                     setLoading(false);
                 });
         } else {
-            setError('No medicine ID provided.');
+            setError('No medicine ID provided');
             setLoading(false);
         }
     }, [medicineID]);
@@ -63,8 +63,8 @@ function MedicinePage({ user }) {
     }
 
     return (
-        <div className="clinic_version">
-            <div className="container" style={{ marginTop: '200px' }}>
+        <div className="clinic_version" style={{ overflow: 'hidden' }}>
+            <div className="container" style={{ marginTop: '200px', marginBottom: '100px' }} >
                 <div className="row">
                     <div className="col-md-5" style={{ marginRight: 'auto' }}>
                         <img src={medicine.medicinePhoto} alt="medicine-image" className="img-fluid p-5"></img>
@@ -75,7 +75,7 @@ function MedicinePage({ user }) {
                         <p>{medicine.medicineDescription}</p>
                         <h4><strong style={{ color: '#000' }}>${medicine.medicinePrice}</strong></h4>
 
-                        <button onClick={handleBuyNow} style={{ marginTop: '20px' }} className="btn-light btn-brd effect-1">Buy Now</button>
+                        <button onClick={handleBuyNow} style={{ marginTop: '20px', outline: 'none' }} className="btn-light btn-brd effect-1">Buy Now</button>
 
                         <p style={{ color: '#1d86df', marginTop: '20px' }}>Specifications</p>
 

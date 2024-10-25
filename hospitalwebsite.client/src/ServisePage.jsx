@@ -21,7 +21,7 @@ function ServisePage({ user }) {
         <div className="clinic_version">
             <div className="container" style={{ marginTop: '185px', marginBottom: '100px' }}>
                 <div className="heading">
-                    <img src="images/icon-logo.png" alt="icon-logo"></img>
+                    <img src="https://hospitalblobstorage.blob.core.windows.net/images/icon-logo.png" alt="icon-logo"></img>
                     <h2>Our Services</h2>
                 </div>
                 <div className="row g-4">
@@ -34,7 +34,7 @@ function ServisePage({ user }) {
                                 <h4>{service.serviceName}</h4>
                                 <p>{service.serviceDescription}</p>
 
-                                {(!user) && (
+                                {(user) && (
                                     <Link to={{ pathname: '/booking' }} state={{ serviceName: service.serviceName }}>
                                         <button className="btn" style={{ fontSize: '15px' }}>
                                             <i className="fa fa-plus text-primary me-3" style={{ marginLeft: '5px' }}></i>Appointment

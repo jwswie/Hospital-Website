@@ -12,7 +12,7 @@ function HomePage() {
             <div className="section" style={{ marginTop: '100px' }}>
                 <div className="container">
                     <div className="heading">
-                        <img src="images/icon-logo.png" alt="icon-logo"></img>
+                        <img src="https://hospitalblobstorage.blob.core.windows.net/images/icon-logo.png" alt="icon-logo"></img>
                         <h2>The Specialist Clinic</h2>
                     </div>
                     <div className="row">
@@ -31,7 +31,7 @@ function HomePage() {
                         </div>
 
                         <div className="col-md-6">
-                            <img src="images/home_about.png" alt="about-image" className="img-responsive"></img>
+                            <img src="https://hospitalblobstorage.blob.core.windows.net/images/home_about.png" alt="about-image" className="img-responsive"></img>
                         </div>
                     </div>
 
@@ -39,25 +39,25 @@ function HomePage() {
 
                     <div className="col-md-3">
                         <div className="service-widget">
-                            <img src="images/clinic_01.jpg" alt="clinic-photo" className="img-responsive"></img>
+                            <img src="https://hospitalblobstorage.blob.core.windows.net/images/clinic_01.jpg" alt="clinic-photo" className="img-responsive"></img>
                             <h3>Digital Control Center</h3>
                         </div>
                     </div>
                     <div className="col-md-3">
                         <div className="service-widget">
-                            <img src="images/clinic_02.jpg" alt="clinic-photo" className="img-responsive"></img>
+                            <img src="https://hospitalblobstorage.blob.core.windows.net/images/clinic_02.jpg" alt="clinic-photo" className="img-responsive"></img>
                             <h3>Hygienic Operating Room</h3>
                         </div>
                     </div>
                     <div className="col-md-3">
                         <div className="service-widget">
-                            <img src="images/clinic_03.jpg" alt="clinic-photo" className="img-responsive"></img>
+                            <img src="https://hospitalblobstorage.blob.core.windows.net/images/clinic_03.jpg" alt="clinic-photo" className="img-responsive"></img>
                             <h3>Specialist Physicians</h3>
                         </div>
                     </div>
                     <div className="col-md-3">
                         <div className="service-widget">
-                            <img src="images/clinic_04.jpg" alt="clinic-photo" className="img-responsive"></img>
+                            <img src="https://hospitalblobstorage.blob.core.windows.net/images/clinic_04.jpg" alt="clinic-photo" className="img-responsive"></img>
                             <h3>Comfortable Rooms</h3>
                         </div>
                     </div>

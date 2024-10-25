@@ -25,7 +25,7 @@ function ContactPage() {
         <div className="clinic_version">
             <div className="section" style={{ marginTop: '100px' }}>
                 <div className="heading">
-                    <img src="images/icon-logo.png" alt="#"></img>
+                    <img src="https://hospitalblobstorage.blob.core.windows.net/images/icon-logo.png" alt="#"></img>
                     <h2>Get in Touch</h2>
                 </div>
 
@@ -71,7 +71,7 @@ function ContactPage() {
             <div className="container" style={{ marginBottom: '100px' }}>
                 <div className="col-md-4">
                     <div className="logo">
-                        <a href=""><img src="images/logo.png" alt=""></img></a>
+                        <a href=""><img src="https://hospitalblobstorage.blob.core.windows.net/images/logo.png" alt=""></img></a>
                         <p>Caring for You, Every Step of the Way</p>
                     </div>
                 </div>

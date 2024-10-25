@@ -21,7 +21,7 @@ function DoctorPage() {
         <div className="clinic_version">
             <div className="container" style={{ marginTop: '200px' }}>
                 <div className="heading">
-                    <img src="images/icon-logo.png" alt="Logo" />
+                    <img src="https://hospitalblobstorage.blob.core.windows.net/images/icon-logo.png" alt="Logo" />
                     <h2>Our Doctors</h2>
                 </div>
 

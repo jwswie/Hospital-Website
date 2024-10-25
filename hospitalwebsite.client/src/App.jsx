@@ -35,7 +35,7 @@ function App() {
 
                 <div className="container navigation">
                     <a className="navbar-brand" href="index.html" style={{ marginTop: '5px' }}>
-                        <img src="images/logo.png" alt="" width="150" height="40" />
+                        <img src="https://hospitalblobstorage.blob.core.windows.net/images/logo.png" alt="" width="150" height="40" />
                     </a>
 
                     <div className="navbar-collapse navbar-right">
