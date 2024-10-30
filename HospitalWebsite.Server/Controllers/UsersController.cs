@@ -40,5 +40,13 @@ namespace HospitalWebsite.Server.Controllers
 
             return Ok(user);
         }
+
+        [HttpGet("check-phone/{phoneNumber}")]
+        public IActionResult CheckPhoneNumber(string phoneNumber)
+        {
+            var exists = _context.Users.Any(u => u.PhoneNumber == phoneNumber);
+            return Ok(exists);
+        }
+
     }
 }

@@ -37,7 +37,7 @@ function ProfilePage({ setUser }) {
                             <h1>Bio Graph</h1>
                             <div className="row">
                                 <div className="bio-row">
-                                    <p><span>First Name </span>: Camila</p>
+                                    <p><span>First Name </span>: Bob</p>
                                 </div>
                                 <div className="bio-row">
                                     <p><span>Last Name </span>: Smith</p>

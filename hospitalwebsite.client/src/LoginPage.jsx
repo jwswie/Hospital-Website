@@ -25,9 +25,13 @@ function LoginPage({ setUser }) {
                     alert('Phone number already registered. Please log in');
                     return;
                 }
+            } else {
+                console.error('Error checking phone number:', checkResponse.statusText);
+                return;
             }
         } catch (error) {
             console.error('Error checking phone number:', error);
+            return;
         }
 
         const userData = {
@@ -81,7 +85,7 @@ function LoginPage({ setUser }) {
                 <div className="login form">
                     <header>Login</header>
                     <form onSubmit={handleLogin}>
-                        <input type="text" placeholder="Enter your phone number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required />
+                        <input type="text" placeholder="Enter your phone number (+x (xxx) xxx-xxxx)" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required />
                         <input type="submit" className="button" value="Login" />
                     </form>
                     <div className="signup">
@@ -92,7 +96,7 @@ function LoginPage({ setUser }) {
                     <header>Signup</header>
                     <form onSubmit={handleSignup}>
                         <input type="text" placeholder="Enter your full name" value={fullName} onChange={(e) => setFullName(e.target.value)} required />
-                        <input type="text" placeholder="Enter your phone number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required />
+                        <input type="text" placeholder="Enter your phone number (+x (xxx) xxx-xxxx)" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required />
                         <input type="submit" className="button" value="Signup" />
                     </form>
                     <div className="signup">
