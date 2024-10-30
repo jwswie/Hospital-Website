@@ -14,6 +14,7 @@ import BookingPage from './BookingPage';
 import SuccessPage from './SuccessPage';
 import ProfilePage from './ProfilePage';
 import MedicinePage from './MedicinePage';
+import CartPage from './CartPage';
 
 function App() {
     const location = useLocation();
@@ -82,6 +83,7 @@ function App() {
                 <Route path="/success" element={<SuccessPage />} />
                 <Route path="/profile" element={<ProfilePage setUser={setUser} />} />
                 <Route path="/medicine" element={<MedicinePage user={user} />} />
+                <Route path="/cart" element={<CartPage />} />
             </Routes>
 
             <div className="copyright-area">

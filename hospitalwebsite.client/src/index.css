@@ -35,7 +35,7 @@ body {
 }
 
 .navbar-custom {
-    box-shadow: 0 1px 6px rgba(0,0,0,.2);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
 }
 
     .navbar-custom ul.nav li a {
@@ -47,11 +47,13 @@ body {
         background-color: transparent;
     }
 
-    .navbar-custom .nav li a:hover, .navbar-custom .nav li.active a {
+    .navbar-custom .nav li a:hover,
+    .navbar-custom .nav li.active a {
         color: #157fda;
     }
 
-h1, h2 {
+h1,
+h2 {
     font-weight: bold;
     font-size: 34px;
     padding: 0 0 10px 0;
@@ -113,7 +115,8 @@ h3 {
     text-align: center;
 }
 
-a, .btn {
+a,
+.btn {
     color: #ffffff;
     text-decoration: none !important;
 }
@@ -143,7 +146,8 @@ a, .btn {
         opacity: 1;
     }
 
-    .effect-1:after, .btn-brd {
+    .effect-1:after,
+    .btn-brd {
         border-radius: 100px;
     }
 
@@ -253,12 +257,13 @@ a, .btn {
     position: absolute;
     width: 40%;
     height: 100%;
-    background: rgba(0,0,0,.8);
+    background: rgba(0, 0, 0, .8);
     z-index: 1;
     padding: 60px;
 }
 
-    .form-contant input, .form-contant textarea {
+    .form-contant input,
+    .form-contant textarea {
         background: transparent;
         padding: 0;
         border: none;
@@ -294,7 +299,8 @@ a, .btn {
     margin-bottom: 30px;
 }
 
-.footer-info h3, .subcriber-info h3 {
+.footer-info h3,
+.subcriber-info h3 {
     color: #222;
     font-size: 22px;
     font-weight: 600;
@@ -386,7 +392,8 @@ a, .btn {
     margin-top: var(--bs-gutter-y);
 }
 
-.g-4, .gy-4 {
+.g-4,
+.gy-4 {
     --bs-gutter-y: 1.5rem
 }
 
@@ -423,7 +430,7 @@ a, .btn {
     width: 100%;
     background: #fff;
     min-height: 425px;
-    box-shadow: 0 0 50px -22px rgba(0,0,0,0.3);
+    box-shadow: 0 0 50px -22px rgba(0, 0, 0, 0.3);
     padding: 20px;
 }
 
@@ -473,7 +480,8 @@ a, .btn {
     font-weight: 600;
 }
 
-    .form-group button:hover, .form-group button:focus {
+    .form-group button:hover,
+    .form-group button:focus {
         background: linear-gradient(to right, #39b49a 0%, #1d86df 100%);
     }
 
@@ -494,7 +502,8 @@ a, .btn {
     margin: 0;
 }
 
-    .form-group input, .form-group select {
+    .form-group input,
+    .form-group select {
         float: left;
         width: 100%;
         border-radius: 0;
@@ -521,3 +530,29 @@ a, .btn {
         color: #333;
         height: 90px;
     }
+
+.img-fluid {
+    max-width: 100%;
+    height: auto
+}
+
+.show {
+    display: block;
+}
+
+.table {
+    width: 100%;
+    text-align: center;
+}
+
+    .table th,
+    .table td {
+        vertical-align: middle;
+        text-align: center;
+    }
+
+.product-thumbnail img {
+    display: block;
+    margin: 0 auto;
+    max-width: 200px;
+}

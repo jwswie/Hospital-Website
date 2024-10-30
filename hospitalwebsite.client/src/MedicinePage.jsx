@@ -75,7 +75,9 @@ function MedicinePage({ user }) {
                         <p>{medicine.medicineDescription}</p>
                         <h4><strong style={{ color: '#000' }}>${medicine.medicinePrice}</strong></h4>
 
-                        <button onClick={handleBuyNow} style={{ marginTop: '20px', outline: 'none' }} className="btn-light btn-brd effect-1">Buy Now</button>
+                        <Link to="/cart"><button style={{ marginTop: '20px', outline: 'none' }} className="btn-light btn-brd effect-1">Add to Cart</button></Link>
+
+                        {/*<button onClick={handleBuyNow} style={{ marginTop: '20px', outline: 'none' }} className="btn-light btn-brd effect-1">Buy Now</button>*/}
 
                         <p style={{ color: '#1d86df', marginTop: '20px' }}>Specifications</p>
 
