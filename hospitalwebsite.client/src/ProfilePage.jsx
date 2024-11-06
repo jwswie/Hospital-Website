@@ -136,6 +136,16 @@ function ProfilePage({ setUser }) {
                                 </div>
                             </div>
                         </div>
+
+                        <div className="col-md-6">
+                            <div className="panel">
+                                <div className="panel-body">
+                                    <div className="bio-desk">
+                                        <Link to="/cart"><h4 style={{ color: '#e26b7f' }}>Your Cart</h4></Link>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

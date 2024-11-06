@@ -36,14 +36,15 @@ function MedicinePage({ user }) {
 
         const newOrder = {
             userID: user.userID,
-            medicineID: medicineID
+            medicineID: medicineID,
+            quantity: 1
         };
 
         axios.post('/api/Orders', newOrder)
             .then(response => {
                 console.log('Order created:', response.data);
 
-                navigate('/success', { state: { message: 'Your order was successfully completed!', message2: 'Thank you!' } });
+                navigate('/cart');
             })
             .catch(error => {
                 console.error('Error creating order: ', error);
@@ -75,9 +76,7 @@ function MedicinePage({ user }) {
                         <p>{medicine.medicineDescription}</p>
                         <h4><strong style={{ color: '#000' }}>${medicine.medicinePrice}</strong></h4>
 
-                        <Link to="/cart"><button style={{ marginTop: '20px', outline: 'none' }} className="btn-light btn-brd effect-1">Add to Cart</button></Link>
-
-                        {/*<button onClick={handleBuyNow} style={{ marginTop: '20px', outline: 'none' }} className="btn-light btn-brd effect-1">Buy Now</button>*/}
+                        <button onClick={handleBuyNow}  style={{ marginTop: '20px', outline: 'none' }} className="btn-light btn-brd effect-1">Add to Cart</button>
 
                         <p style={{ color: '#1d86df', marginTop: '20px' }}>Specifications</p>
 

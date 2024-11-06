@@ -1,5 +1,6 @@
 ﻿using HospitalWebsite.Server.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace HospitalWebsite.Server.Controllers
 {
@@ -14,12 +15,18 @@ namespace HospitalWebsite.Server.Controllers
             _context = context;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetOrders()
+        {
+            var orders = await _context.Orders.Include(o => o.Medicine).ToListAsync();
+            return Ok(orders);
+        }
+
         [HttpPost]
         public async Task<ActionResult<Order>> CreateOrder([FromBody] Order newOrder)
         {
             _context.Orders.Add(newOrder);
             await _context.SaveChangesAsync();
-
             return Ok(newOrder);
         }
     }
