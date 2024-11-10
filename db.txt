@@ -1,0 +1,111 @@
+CREATE TABLE Doctors (
+    DoctorID INT IDENTITY(1,1) PRIMARY KEY,
+    DoctorName NVARCHAR(100) NOT NULL,
+    DoctorSpecialty NVARCHAR(100),
+    Greetings NVARCHAR(MAX),
+	DoctorPhoto NVARCHAR(MAX)
+)
+
+CREATE TABLE Services (
+    ServiceID INT IDENTITY(1,1) PRIMARY KEY,
+    ServiceName NVARCHAR(100) NOT NULL,
+    ServiceDescription NVARCHAR(MAX),
+	DoctorID INT
+)
+
+CREATE TABLE Appointments (
+    AppointmentID INT IDENTITY(1,1) PRIMARY KEY,
+    ServiceID INT,
+	UserID INT,
+    TimeFrom NVARCHAR(100) NOT NULL,
+    TimeTo NVARCHAR(100) NOT NULL, 
+    AppointmentDay NVARCHAR(100) NOT NULL,
+)
+
+CREATE TABLE Users (
+    UserID INT IDENTITY(1,1) PRIMARY KEY,
+    UserName NVARCHAR(100) NOT NULL,
+    PhoneNumber NVARCHAR(100)
+)
+
+CREATE TABLE Orders (
+    OrderID INT IDENTITY(1,1) PRIMARY KEY,
+    UserID INT,
+	MedicineID INT,
+	Quantity INT
+)
+
+CREATE TABLE Medicines (
+    MedicineID INT IDENTITY(1,1) PRIMARY KEY,
+    MedicineName NVARCHAR(255) NOT NULL,
+    MedicinePrice DECIMAL(10, 2) NOT NULL,
+    MedicineWeight DECIMAL(10, 2),
+    MedicineAmount INT,
+    OTCNum NVARCHAR(50),
+    MedicineDescription NVARCHAR(MAX),
+    Packaging NVARCHAR(100),
+    HPISCode NVARCHAR(50),
+    HealthcareProvidersOnly NVARCHAR(50),
+    MedicationRoute NVARCHAR(100),
+	MedicinePhoto NVARCHAR(MAX)
+)
+
+
+INSERT INTO Doctors (DoctorName, DoctorSpecialty, Greetings, DoctorPhoto)
+VALUES 
+('John Smith', 'General Medicine', 'Welcome to our clinic, I am ready to assist you', 'https://hospitalblobstorage.blob.core.windows.net/images/doctor_01.jpg'),
+('Michael Johnson', 'Cardiology', 'Every heartbeat matters', 'https://hospitalblobstorage.blob.core.windows.net/images/doctor_04.png'),
+('Emily Williams', 'Surgery', 'Precision is the key to healing', 'https://hospitalblobstorage.blob.core.windows.net/images/doctor_05.png'),
+('Sarah Brown', 'Dermatology', 'Healthy skin is a reflection of overall wellness', 'https://hospitalblobstorage.blob.core.windows.net/images/doctor_06.png'),
+('Jessica Davis', 'Gynecology', 'Empowering women through health', 'https://hospitalblobstorage.blob.core.windows.net/images/doctor_07.png'),
+('Laura Martinez', 'Pediatrics', 'Children are our future, lets keep them healthy', 'https://hospitalblobstorage.blob.core.windows.net/images/doctor_03.jpg'),
+('Anna Wilson', 'Therapy', 'I am your general health care provider', 'https://hospitalblobstorage.blob.core.windows.net/images/doctor_02.jpg'),
+('Robert Garcia', 'Dentistry', 'A healthy smile is a beautiful smile', 'https://hospitalblobstorage.blob.core.windows.net/images/doctor_08.png'),
+('David Miller', 'Traumatology', 'Restoring movement, restoring life', 'https://hospitalblobstorage.blob.core.windows.net/images/doctor_09.png'),
+('Richard Anderson', 'Otolaryngology', 'Breathing easy is a blessing', 'https://hospitalblobstorage.blob.core.windows.net/images/doctor_10.png'),
+('James Taylor', 'Ophthalmology', 'Vision is the art of seeing what is invisible', 'https://hospitalblobstorage.blob.core.windows.net/images/doctor_11.png'),
+('Michelle Thomas', 'Psychology', 'Understanding is the first step to healing', 'https://hospitalblobstorage.blob.core.windows.net/images/doctor_12.png');
+
+INSERT INTO Services (ServiceName, ServiceDescription, DoctorID)
+VALUES 
+('General Medicine Services', 'Comprehensive care for a wide range of health concerns, including routine check-ups, diagnostics, and treatment plans for chronic and acute conditions', 7),
+('Cardiology Clinic', 'Specialized heart health services, including diagnostics, treatment of cardiovascular diseases, and long-term management of heart conditions', 2),
+('Surgical Department', 'Offering a variety of surgical procedures, from emergency surgeries to scheduled operations, with a focus on precision and patient recovery', 3),
+('Dermatology Care', 'Treatment and care for skin conditions, ranging from acne and eczema to skin cancer screenings and advanced dermatological procedures', 4),
+('Gynecology Services', 'Comprehensive care for womens reproductive health, including prenatal care, family planning, and treatment of gynecological issues', 5),
+('Pediatric Care', 'Specialized health services for children, focusing on growth, development, vaccinations, and treatment of pediatric diseases', 6),
+('Dental Clinic', 'Full range of dental services, including routine check-ups, cleanings, fillings, and advanced dental procedures to ensure optimal oral health', 8),
+('Traumatology Care', 'Emergency and rehabilitative care for injuries, fractures, and musculoskeletal conditions to restore mobility and function', 9),
+('ENT Services', 'Diagnosis and treatment of ear, nose, and throat conditions, such as hearing issues, sinus infections, and voice disorders', 10),
+('Ophthalmology Services', 'Eye care services, including vision checks, treatment of eye diseases, and corrective procedures like laser surgery', 11),
+('Psychological Counseling', 'Mental health support, including individual and family therapy, to help patients manage stress, anxiety, depression, and other psychological conditions', 12),
+('Clinical Laboratory', 'Advanced diagnostic laboratory offering blood tests, biopsies, and a variety of screenings to assist in accurate diagnosis and treatment planning', 0)
+
+INSERT INTO Appointments (ServiceID, UserID, TimeFrom, TimeTo, AppointmentDay)
+VALUES 
+(12, 1, '10AM', '11AM', 'Monday'),
+(11, 1, '10AM', '11AM', 'Tuesday'),
+(7, 1, '1PM', '2PM', 'Tuesday'),
+(12, 1, '11AM', '2PM', 'Wednesday'),
+(11, 1, '10AM', '11AM', 'Thursday'),
+(7, 1, '1PM', '2PM', 'Thursday'),
+(12, 1, '10AM', '11AM', 'Friday')
+
+INSERT INTO Medicines (MedicineName, MedicinePrice, MedicineWeight, MedicineAmount, OTCNum, MedicineDescription, Packaging, HPISCode, HealthcareProvidersOnly, MedicationRoute, MedicinePhoto) VALUES
+('Bioderma', 20.99, 0.5, 100, 'OTC112916', 'Iconic cleansing micellar water that effortlessly cleanses the skin to remove dirt, debris, pollution and makeup, while respecting sensitive skin', '1 FL', '999_200_40_0', 'No', 'Topical', 'https://hospitalblobstorage.blob.core.windows.net/products/product_01.png'),
+('Chanca Piedra', 21.99, 0.113, 150, 'OTC00381', 'Chanca piedra, also known as "stonebreaker," is a tropical plant native to the Amazon rainforest and has been used traditionally for its potential to support kidney and urinary tract health', '1 FL', '999_200_40_0', 'No', 'Oral', 'https://hospitalblobstorage.blob.core.windows.net/products/product_02.png'),
+('Umcka Cold Care', 36.82, 1.50, 200, 'OTC15271', 'Shortens duration and reduces severity cough, congestion, sore throat, sinus and bronchial infections', '2 Oz', '999_200_40_0', 'Yes', 'Oral', 'https://hospitalblobstorage.blob.core.windows.net/products/product_03.png'),
+('Cetyl Pure', 14.99, 0.59, 200, 'OTC63845', 'Promote joint comfort with Natrol Cetyl Pure, a dietary supplement made with cetyl myristoleate and other key ingredients', '120 EA', '999_200_40_0', 'No', 'Oral', 'https://hospitalblobstorage.blob.core.windows.net/products/product_04.png'),
+('CLA Core', 21.99, 0.3, 200, 'OTC23745', 'A proven healthy dietary fat that helps shed excess pounds', '180 EA', '999_200_40_0', 'No', 'Oral', 'https://hospitalblobstorage.blob.core.windows.net/products/product_05.png'),
+('Poo Pourri', 9.99, 0.118, 200, 'OTC97054', 'A blend of essential oils & other natural compounds that eliminates bathroom odors by creating a protective film on the waters surface', '1 EA', '999_200_40_0', 'No', 'Topical', 'https://hospitalblobstorage.blob.core.windows.net/products/product_06.png')
+
+
+select * from Doctors
+drop table Doctors
+select * from Services
+select * from Appointments
+drop table Services
+select * from Users
+select * from Orders
+drop table Orders
+select * from Medicines
