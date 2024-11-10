@@ -83,7 +83,7 @@ function App() {
                 <Route path="/success" element={<SuccessPage />} />
                 <Route path="/profile" element={<ProfilePage setUser={setUser} />} />
                 <Route path="/medicine" element={<MedicinePage user={user} />} />
-                <Route path="/cart" element={<CartPage />} />
+                <Route path="/cart" element={<CartPage user={user} />} />
             </Routes>
 
             <div className="copyright-area">

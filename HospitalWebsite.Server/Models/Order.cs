@@ -18,6 +18,6 @@ namespace HospitalWebsite.Server.Models
         public int Quantity { get; set; }
 
         [ForeignKey("MedicineID")]
-        public Medicine Medicine { get; set; }
+        public Medicine? Medicine { get; set; }
     }
 }

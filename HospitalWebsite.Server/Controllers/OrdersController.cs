@@ -29,5 +29,38 @@ namespace HospitalWebsite.Server.Controllers
             await _context.SaveChangesAsync();
             return Ok(newOrder);
         }
+
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteOrder(int id)
+        {
+            var order = await _context.Orders.FindAsync(id);
+            if (order == null)
+            {
+                return NotFound();
+            }
+
+            _context.Orders.Remove(order);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateOrderQuantity(int id, [FromBody] Order updatedOrder)
+        {
+            var order = await _context.Orders.FindAsync(id);
+            if (order == null)
+            {
+                return NotFound();
+            }
+
+            order.Quantity = updatedOrder.Quantity;
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
     }
 }

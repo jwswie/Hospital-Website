@@ -35,7 +35,6 @@ function ShopPage() {
     useEffect(() => {
         axios.get('/api/Medicines')
             .then(response => {
-                console.log(response.data);
                 setMedicines(response.data);
             })
             .catch(error => {

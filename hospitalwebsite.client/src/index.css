@@ -556,3 +556,11 @@ a,
     margin: 0 auto;
     max-width: 200px;
 }
+
+.product-quantity {
+    text-align: center;
+}
+
+    .product-quantity .input-group {
+        justify-content: center;
+    }

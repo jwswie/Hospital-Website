@@ -42,8 +42,6 @@ function MedicinePage({ user }) {
 
         axios.post('/api/Orders', newOrder)
             .then(response => {
-                console.log('Order created:', response.data);
-
                 navigate('/cart');
             })
             .catch(error => {

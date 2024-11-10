@@ -1,29 +1,54 @@
 import './css/bootstrap.min.css';
 import './css/font-awesome.min.css';
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-function CartPage({ userId }) {
+function CartPage({ user }) {
     const [orders, setOrders] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get('/api/Orders')
             .then(response => {
-                setOrders(response.data);
+                const userOrders = response.data.filter(order => order.userID === user.userID);
+                if (userOrders.length === 0) {
+                    navigate('/success', { state: { message2: 'You don\'t have any orders!', message: 'Go and search in the shop' } });
+                } else {
+                    setOrders(userOrders);
+                }
             })
             .catch(error => {
                 console.error('Error fetching data: ', error);
             });
-    }, []);
+    }, [user.userID, navigate]);
+
+    const deleteOrder = async (orderID) => {
+        try {
+            await axios.delete(`/api/Orders/${orderID}`);
+            setOrders(prevOrders => prevOrders.filter(order => order.orderID !== orderID));
+        } catch (error) {
+            console.error('Error deleting order:', error);
+        }
+    };
+
+    const updateOrderQuantity = async (orderID, newQuantity) => {
+        try {
+            await axios.put(`/api/Orders/${orderID}`, { orderID, quantity: newQuantity });
+
+        } catch (error) {
+            console.error('Error updating quantity:', error);
+        }
+    };
 
     const handleQuantityChange = (orderID, newQuantity) => {
         if (newQuantity <= 0) {
-            setOrders(prevOrders => prevOrders.filter(order => order.orderID !== orderID));
+            deleteOrder(orderID);
         } else {
             setOrders(prevOrders =>
-                prevOrders.map(order => order.orderID === orderID ? { ...order, quantity: newQuantity } : order )
+                prevOrders.map(order => order.orderID === orderID ? { ...order, quantity: newQuantity } : order)
             );
+            updateOrderQuantity(orderID, newQuantity);
         }
     };
 
@@ -66,25 +91,12 @@ function CartPage({ userId }) {
                                                 <h2 className="h5 text-black">{item.medicine?.medicineName}</h2>
                                             </td>
                                             <td>${item.medicine?.medicinePrice.toFixed(2)}</td>
-                                            <td>
-                                                <div className="input-group" style={{ maxWidth: '150px', display: 'flex', alignItems: 'center' }}>
-                                                    <button className="btn btn-outline-secondary" type="button" style={{ backgroundColor: '#157fda', color: '#fff', marginLeft: '10px' }}
-                                                        onClick={() => handleQuantityChange(item.orderID, item.quantity - 1)} >-</button>
-                                                    <input
-                                                        type="number"
-                                                        className="form-control text-center"
-                                                        value={item.quantity}
-                                                        min="0"
-                                                        readOnly
-                                                        onChange={(e) => handleInputChange(e, item.orderID)}
-                                                        style={{ maxWidth: '60px' }}
-                                                    />
-                                                    <button
-                                                        className="btn btn-outline-secondary"
-                                                        type="button"
-                                                        style={{ backgroundColor: '#157fda', color: '#fff' }}
-                                                        onClick={() => handleQuantityChange(item.orderID, item.quantity + 1)}
-                                                    >+</button>
+
+                                            <td className="product-quantity text-center">
+                                                <div className="input-group justify-content-center" style={{ display: 'flex', alignItems: 'center' }}>
+                                                    <button className="btn btn-outline-secondary" type="button" style={{ backgroundColor: '#157fda', color: '#fff', height: '34px', borderRadius: '0px' }} onClick={() => handleQuantityChange(item.orderID, item.quantity - 1)}>-</button>
+                                                    <input type="number" className="form-control text-center" min="0" value={item.quantity} readOnly style={{ maxWidth: '60px' }} onChange={(e) => handleInputChange(e, item.orderID)} />
+                                                    <button className="btn btn-outline-secondary" type="button" style={{ backgroundColor: '#157fda', color: '#fff', height: '34px', borderRadius: '0px' }} onClick={() => handleQuantityChange(item.orderID, item.quantity + 1)}>+</button>
                                                 </div>
                                             </td>
                                             <td>${(item.medicine?.medicinePrice * item.quantity).toFixed(2)}</td>
@@ -98,23 +110,35 @@ function CartPage({ userId }) {
 
                 <div className="col-md-6">
                     <div className="row">
-                        <div className="col-md-12 text-left border-bottom mb-5">
-                            <h3 style={{ float: 'left', background: 'none', color: '#000', fontSize: '20px' }}>Cart Totals</h3>
-                        </div>
-                        <div className="row mb-5">
-                            <div className="col-md-6" style={{ float: 'left' }}>
-                                <span>Total</span>
+                        <div className="col-md-7" style={{ color: '#000' }}>
+                            <div className="row">
+                                <div className="col-md-12 text-left border-bottom mb-5">
+                                    <h3 style={{ float: 'left', background: 'none', color: '#000', fontSize: '25px', borderBottom: '1px solid #dee2e6' }}>Cart Totals</h3>
+                                </div>
                             </div>
-                            <div className="col-md-6 text-right">
-                                <strong>${calculateTotal()}</strong>
+                            <div className="row mb-3">
+                                <div className="col-md-6">
+                                    <span>Subtotal</span>
+                                </div>
+                                <div className="col-md-6 text-right">
+                                    <strong>${calculateTotal()}</strong>
+                                </div>
                             </div>
-                        </div>
+                            <div className="row mb-5">
+                                <div className="col-md-6">
+                                    <span>Total</span>
+                                </div>
+                                <div className="col-md-6 text-right">
+                                    <strong>${calculateTotal()}</strong>
+                                </div>
+                            </div>
 
-                        <div className="row" style={{ marginTop: '50px', marginBottom: '20px', float: 'left' }}>
-                            <div className="col-md-12">
-                                <Link to="/checkout">
-                                    <button className="btn btn-light btn-brd effect-1">Proceed To Checkout</button>
-                                </Link>
+                            <div className="row" style={{ marginTop: '20px', marginBottom: '20px' }}>
+                                <div className="col-md-12">
+                                    <Link to="/checkout">
+                                        <button className="btn btn-light btn-brd effect-1">Proceed To Checkout</button>
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                     </div>
